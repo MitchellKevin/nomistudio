@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Artikelen van Mitchell Scholte over development, design, hardware en security.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="nomi-logo.svg">
+    <link rel="stylesheet" href="nomi-studio.css">
+    <title>Blog — Mitchell Scholte</title>
+</head>
+<body>
+  <header class="header">
+    <div class="flex-wrapper">
+      <div class="logo-wrap">
+        <a class="logo-link" href="index.html" aria-label="Terug naar home">
+          <img class="logo-img" src="nomi-logo.svg" alt="">
+        </a>
+        <div class="logo-text">
+          <span class="btn-2">MITCHELL</span>
+          <span class="btn-2">SCHOLTE</span>
+        </div>
+      </div>
+      <ul class="header-menu">
+        <li class="header-menu__item header-text-1"><a href="index.html#services">Services</a></li>
+        <li class="header-menu__item header-text-1"><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="archive">
+      <div class="container">
+        <span class="blog__eyebrow">Blog</span>
+        <h1 class="archive__title">Wat ik uitzoek</h1>
+        <p class="archive__intro">Aantekeningen over development, design, hardware en security — meestal naar aanleiding van iets dat ik net zelf heb stukgemaakt.</p>
+
+        <!-- Filter. Buttons carry the tag, cards carry data-tag; blog.js just
+             matches the two. Adding a post with a new tag means adding one
+             button here. -->
+        <div class="filters" role="group" aria-label="Filter op onderwerp">
+        <button type="button" class="filters__btn" data-filter="all" aria-pressed="true">Alles</button>
+        <button type="button" class="filters__btn" data-filter="Development" aria-pressed="false">Development</button>
+        <button type="button" class="filters__btn" data-filter="Design" aria-pressed="false">Design</button>
+        <button type="button" class="filters__btn" data-filter="Hardware" aria-pressed="false">Hardware</button>
+        <button type="button" class="filters__btn" data-filter="Security" aria-pressed="false">Security</button>
+          <span class="filters__count" id="filter-count" aria-live="polite"></span>
+        </div>
+
+        <!-- PLACEHOLDER POSTS — replace with real ones. Each links to
+             blog/<slug>.html; only blog/post-template.html exists so far. -->
+        <div class="blog__grid" id="archive-grid">
+        <a class="bpost" href="blog/pinning-without-jank.html" data-tag="Development">
+          <span class="bpost__meta"><span class="bpost__tag">Development</span><time datetime="2026-02-04">2026-02-04</time><span aria-hidden="true">·</span>6 min</span>
+          <span class="bpost__title">ScrollTrigger pinnen zonder gehakkel</span>
+          <span class="bpost__excerpt">Vijf gepinde secties op één pagina bouwen en toch soepel blijven scrollen — wat wel en niet werkt.</span>
+          <span class="bpost__more">Lees verder <span class="bpost__arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="bpost" href="blog/monochrome-contrast.html" data-tag="Design">
+          <span class="bpost__meta"><span class="bpost__tag">Design</span><time datetime="2026-01-19">2026-01-19</time><span aria-hidden="true">·</span>4 min</span>
+          <span class="bpost__title">Contrast in een palet zonder kleur</span>
+          <span class="bpost__excerpt">Als alles zwart, wit of grijs is, moet hiërarchie ergens anders vandaan komen. Zo pak ik dat aan.</span>
+          <span class="bpost__more">Lees verder <span class="bpost__arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="bpost" href="blog/pcb-bringup.html" data-tag="Hardware">
+          <span class="bpost__meta"><span class="bpost__tag">Hardware</span><time datetime="2025-12-08">2025-12-08</time><span aria-hidden="true">·</span>8 min</span>
+          <span class="bpost__title">Een eigen PCB opstarten zonder debugger</span>
+          <span class="bpost__excerpt">De eerste keer spanning op een zelfontworpen board zetten, en wat je doet als er niets gebeurt.</span>
+          <span class="bpost__more">Lees verder <span class="bpost__arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="bpost" href="blog/first-pentest.html" data-tag="Security">
+          <span class="bpost__meta"><span class="bpost__tag">Security</span><time datetime="2025-11-17">2025-11-17</time><span aria-hidden="true">·</span>7 min</span>
+          <span class="bpost__title">Wat een pentest in de praktijk is</span>
+          <span class="bpost__excerpt">Na de Jr Penetration Tester-path: hoe een echte opdracht verschilt van een oefenmachine.</span>
+          <span class="bpost__more">Lees verder <span class="bpost__arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="bpost" href="blog/css-without-framework.html" data-tag="Development">
+          <span class="bpost__meta"><span class="bpost__tag">Development</span><time datetime="2025-10-02">2025-10-02</time><span aria-hidden="true">·</span>5 min</span>
+          <span class="bpost__title">Waarom ik dit portfolio zonder framework bouwde</span>
+          <span class="bpost__excerpt">Geen build-stap, geen node_modules. Wat dat oplevert en wat het kost.</span>
+          <span class="bpost__more">Lees verder <span class="bpost__arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="bpost" href="blog/thumb-first.html" data-tag="Design">
+          <span class="bpost__meta"><span class="bpost__tag">Design</span><time datetime="2025-09-11">2025-09-11</time><span aria-hidden="true">·</span>4 min</span>
+          <span class="bpost__title">Ontwerpen voor de duim, niet de muis</span>
+          <span class="bpost__excerpt">Hover bestaat niet op een telefoon. Dat verandert meer aan je interface dan je denkt.</span>
+          <span class="bpost__more">Lees verder <span class="bpost__arrow" aria-hidden="true">→</span></span>
+        </a>
+        </div>
+        <p class="archive__empty" id="archive-empty">Nog niets in deze categorie.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__logo-row">
+            <img class="footer__logo-img" src="nomi-logo.svg" alt="">
+            <div class="footer__logo"><span>MITCHELL</span><span>SCHOLTE</span></div>
+          </div>
+          <p class="footer__tagline">Design, build and secure — a studio for ambitious teams shaping what comes next.</p>
+          <div class="footer__loc"><span class="footer__dot"></span>Available for new projects</div>
+        </div>
+
+        <nav class="footer__nav">
+          <div class="footer__col">
+            <h4 class="footer__heading">Services</h4>
+            <a class="footer__link" href="detail-pages/services/ux-design.html">UX Design</a>
+            <a class="footer__link" href="detail-pages/services/web-development.html">Web Development</a>
+            <a class="footer__link" href="detail-pages/services/hardware-engineering.html">Hardware Engineering</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Company</h4>
+            <a class="footer__link" href="index.html#services">Services</a>
+            <a class="footer__link" href="index.html#showcase">Work</a>
+            <a class="footer__link" href="blog.html">Blog</a>
+            <a class="footer__link" href="index.html#contact">Contact</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Elsewhere</h4>
+            <a class="footer__link" href="#">LinkedIn</a>
+            <a class="footer__link" href="#">Instagram</a>
+            <a class="footer__link" href="#">X (Twitter)</a>
+            <a class="footer__link" href="#">Dribbble</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 Mitchell Scholte. All rights reserved.</span>
+        <span class="footer__made">Made in the Netherlands 🇳🇱</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="blog.js"></script>
+</body>
+</html>
