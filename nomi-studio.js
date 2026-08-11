@@ -83,6 +83,8 @@ const hideElements = () => {
 // Live local time in the Netherlands, so the line reads e.g. "Netherlands — 14:32 CEST".
 // Handles CET/CEST automatically and stays correct wherever the visitor is.
 const localTime = document.querySelector('#local-time');
+// the about section shows the same clock, without the country prefix
+const aboutTime = document.querySelector('#about-time');
 
 const timeFormatter = new Intl.DateTimeFormat('en-GB', {
   timeZone: 'Europe/Amsterdam',
@@ -93,11 +95,15 @@ const timeFormatter = new Intl.DateTimeFormat('en-GB', {
 });
 
 const renderLocalTime = () => {
-  if (!localTime) return;
-  const next = `Netherlands — ${timeFormatter.format(new Date())}`;
+  if (!localTime && !aboutTime) return;
+  const now = timeFormatter.format(new Date());
+  const next = `Netherlands — ${now}`;
   // only touch the DOM when the minute actually rolls over
-  if (localTime.textContent !== next) {
+  if (localTime && localTime.textContent !== next) {
     localTime.textContent = next;
+  }
+  if (aboutTime && aboutTime.textContent !== now) {
+    aboutTime.textContent = now;
   }
 }
 
@@ -395,6 +401,130 @@ if (showcaseSection && deck) {
       scrollTrigger: { trigger: showcaseSection, start: 'top bottom', end: 'bottom top', scrub: true },
     }
   );
+}
+
+// MARK: About — the logo's wave used as a waterline over the portrait.
+//
+// One sine function feeds two shapes per layer: the closed path that masks the
+// lit copy of the photo, and the open curve drawn on top of it. They are built
+// from the same points, so the light always stops exactly at the visible wave.
+// Scroll raises the level; a ticker drifts the two layers at different speeds
+// and wavelengths so the crests never settle into a repeating pattern.
+const aboutSection = document.querySelector('.about');
+if (aboutSection) {
+  const VB = 200;   // the orb's viewBox is 200 x 200
+  const OVER = 40;  // draw past both edges so the ends are never visible
+  // the waterline and the ink fill run on one scroll window, so the portrait
+  // finishes lighting up at the same moment the last line of copy inks in
+  const aboutBody = aboutSection.querySelector('.about__body');
+  const READ_START = 'top 80%';
+  const READ_END = 'bottom 55%';
+  const layers = [
+    {
+      fill: aboutSection.querySelector('.about__wave--back'),
+      crest: aboutSection.querySelector('.about__crest--back'),
+      amp: 7, wavelength: 118, speed: 22, phase: 0,
+    },
+    {
+      fill: aboutSection.querySelector('.about__wave--front'),
+      crest: aboutSection.querySelector('.about__crest--front'),
+      amp: 4.5, wavelength: 84, speed: -34, phase: 40,
+    },
+  ];
+
+  if (layers.every((l) => l.fill && l.crest)) {
+    // starts below the orb (empty) and ends above it (fully lit)
+    const level = { y: VB + 14 };
+
+    const draw = () => {
+      layers.forEach((l) => {
+        let d = '';
+        for (let x = -OVER; x <= VB + OVER; x += 4) {
+          const y = level.y + l.amp * Math.sin(((x + l.phase) / l.wavelength) * Math.PI * 2);
+          d += `${x === -OVER ? 'M' : 'L'}${x},${y.toFixed(2)} `;
+        }
+        l.crest.setAttribute('d', d);
+        // same curve, closed off below the orb so the mask fills everything
+        // under the waterline
+        l.fill.setAttribute('d', `${d}L${VB + OVER},${VB + OVER} L${-OVER},${VB + OVER} Z`);
+      });
+    };
+
+    draw();
+
+    gsap.fromTo(
+      level,
+      { y: VB + 14 },
+      {
+        // ends above the orb, so the portrait is fully lit by the time the
+        // section sits in the middle of the screen
+        y: -26,
+        ease: 'none',
+        onUpdate: draw,
+        scrollTrigger: {
+          trigger: aboutBody || aboutSection,
+          start: READ_START,
+          end: READ_END,
+          scrub: 0.5,
+        },
+      }
+    );
+
+    // the drift only runs while the section is actually on screen
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let visible = false;
+      ScrollTrigger.create({
+        trigger: aboutSection,
+        start: 'top bottom',
+        end: 'bottom top',
+        onToggle: (self) => { visible = self.isActive; },
+      });
+      gsap.ticker.add((time, deltaTime) => {
+        if (!visible) return;
+        layers.forEach((l) => { l.phase += (l.speed * deltaTime) / 1000; });
+        draw();
+      });
+    }
+  }
+
+  // the paragraphs ink in as you scroll past them — the same treatment the
+  // service detail pages give their overview copy
+  const aboutFills = gsap.utils.toArray('.about .fill-text > span');
+  if (aboutFills.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const fillTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: aboutBody || aboutSection,
+        start: READ_START,
+        end: READ_END,
+        scrub: true,
+      },
+    });
+    aboutFills.forEach((span) => fillTl.to(span, { backgroundSize: '200% 200%', ease: 'none' }));
+  }
+
+  // the rest of the copy rises once — the paragraphs sit this one out, the
+  // ink fill above is their entrance
+  gsap.from(
+    aboutSection.querySelectorAll(
+      '.about__eyebrow, .about__title, .about__facts, .about__next'
+    ),
+    {
+      y: '0.2rem',
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.08,
+      scrollTrigger: { trigger: aboutSection, start: 'top 70%', once: true },
+    }
+  );
+
+  gsap.from(aboutSection.querySelector('.about__figure'), {
+    scale: 0.94,
+    opacity: 0,
+    duration: 0.9,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: aboutSection, start: 'top 75%', once: true },
+  });
 }
 
 // MARK: Timeline — an arrow travels a winding road past each event.

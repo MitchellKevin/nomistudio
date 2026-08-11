@@ -3886,3 +3886,234 @@ body {
 @media (prefers-reduced-motion: reduce) {
   #loader-studio { animation: none; opacity: 1; }
 }
+
+/* ------------------------------------------------------------------ */
+/* About — the logo's wave used as a waterline. Scrolling the section  */
+/* raises it across the portrait: below the line the photo is lit,     */
+/* above it the photo sits back in the dark. The mask curve and the    */
+/* visible crest share one path, generated in nomi-studio.js.          */
+/* ------------------------------------------------------------------ */
+.about {
+  position: relative;
+  width: 100vw;
+  background: var(--color-black);
+  padding: 1.4rem 0.6rem 1.5rem;
+  overflow: hidden;
+}
+.about__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 12.4rem;
+  margin: 0 auto;
+}
+
+/* --- the orb ------------------------------------------------------ */
+.about__figure {
+  flex: none;
+  width: 4.1rem;
+  margin: 0;
+}
+.about__orb {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  /* the same soft lift the credential cards use */
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.55);
+}
+/* two copies of one photo: the dark base and the lit copy the wave reveals */
+.about__photo {
+  filter: grayscale(1) brightness(0.4) contrast(1.06);
+}
+.about__photo--lit {
+  filter: grayscale(1) brightness(1.12) contrast(1.08);
+}
+.about__crest {
+  stroke: var(--color-white);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.about__crest--back {
+  stroke: var(--color-accent);
+  stroke-width: 0.7;
+  opacity: 0.45;
+}
+.about__ring {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+.about__caption {
+  margin-top: 0.24rem;
+  text-align: center;
+  font-family: var(--sub-font);
+  font-size: 0.13rem;
+  font-weight: 500;
+  letter-spacing: 0.01rem;
+  color: var(--color-dim);
+}
+
+/* --- the copy ----------------------------------------------------- */
+.about__copy {
+  flex: 1 1 auto;
+  max-width: 6.4rem;
+}
+.about__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+  font-family: var(--sub-font);
+  font-size: 0.14rem;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.about__eyebrow::before {
+  content: "";
+  width: 0.2rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+.about__title {
+  font-family: var(--main-font);
+  font-size: 0.44rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0.12rem 0 0.24rem;
+}
+.about__lead,
+.about__text {
+  font-family: var(--sub-font);
+  font-size: 0.16rem;
+  line-height: 0.27rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0 0 0.18rem;
+}
+
+/* Scroll-driven ink fill, mirroring .fill-text on the service detail pages:
+   the copy starts dark grey and fills to white as it scrolls through. The
+   sweep itself is driven from nomi-studio.js. */
+.about .fill-text > span {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-color: #3a3a3a;
+  background-image: linear-gradient(135deg, #ffffff 50%, #3a3a3a 60%);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 0% 200%;
+  display: inline;
+  will-change: background-size;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about .fill-text > span {
+    background-size: 200% 200%;
+  }
+}
+
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.22rem;
+  margin: 0.34rem 0 0.36rem;
+  padding-top: 0.26rem;
+  border-top: 1px solid var(--color-border);
+}
+.about__fact dt {
+  font-family: var(--sub-font);
+  font-size: 0.115rem;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+  color: var(--color-dim);
+}
+.about__fact dd {
+  margin: 0.07rem 0 0;
+  font-family: var(--sub-font);
+  font-size: 0.145rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-white);
+}
+
+.about__next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+  font-family: var(--sub-font);
+  font-size: 0.15rem;
+  font-weight: 600;
+  color: var(--color-white);
+  text-decoration: none;
+  padding-bottom: 0.06rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color 0.3s ease, gap 0.3s ease;
+}
+.about__next:hover {
+  border-color: var(--color-white);
+  gap: 0.18rem;
+}
+.about__next-arrow {
+  transition: transform 0.3s ease;
+}
+.about__next:hover .about__next-arrow {
+  transform: translateY(0.04rem);
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 1.6rem 0.5rem 1.8rem;
+  }
+  .about__inner {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .about__figure {
+    width: 5.6rem;
+    max-width: 72vw;
+  }
+  .about__caption {
+    font-size: 0.42rem;
+    margin-top: 0.3rem;
+  }
+  .about__copy {
+    max-width: none;
+  }
+  .about__eyebrow {
+    font-size: 0.42rem;
+  }
+  .about__eyebrow::before {
+    width: 0.5rem;
+  }
+  .about__title {
+    font-size: 1rem;
+    margin: 0.3rem 0 0.45rem;
+  }
+  .about__lead,
+  .about__text {
+    font-size: 0.52rem;
+    line-height: 0.86rem;
+    margin-bottom: 0.42rem;
+  }
+  .about__facts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: 0.7rem 0 0.7rem;
+    padding-top: 0.6rem;
+  }
+  .about__fact dt {
+    font-size: 0.36rem;
+    letter-spacing: 0.05rem;
+  }
+  .about__fact dd {
+    font-size: 0.46rem;
+  }
+  .about__next {
+    font-size: 0.5rem;
+    gap: 0.25rem;
+  }
+}
