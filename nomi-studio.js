@@ -16,6 +16,7 @@ const copy = document.querySelector('.copyright span');
 const scrollToRows = document.querySelectorAll('.scroll-to .scroll-to__row span');
 const btnCircle = document.querySelector('.book-btn__circle');
 const btnText = document.querySelector('.btn-text span');
+const partners = document.querySelector('.partners');
 // GOOD DESIGN
 const go = document.querySelector('#go span');
 const od = document.querySelector('#od span');
@@ -48,7 +49,8 @@ const showElements = () => {
         .fromTo(ear, {x: '3.1rem'}, { x: '0rem', duration: fiftyFrames, ease: customEaseIn}, fourFrames)
         .fromTo(tru, {x: '3.1rem'}, { x: '0rem', duration: fiftyFrames, ease: customEaseIn}, fourFrames)
         .fromTo(copy, {y: '0.4rem'}, {y: '0rem', duration: fourtyFrames, ease: customEaseIn}, sixFrames)
-        .fromTo(scrollToRows, {y: '0.5rem'}, {y: '0rem', duration: fourtyFrames, ease: customEaseIn}, sixFrames);
+        .fromTo(scrollToRows, {y: '0.5rem'}, {y: '0rem', duration: fourtyFrames, ease: customEaseIn}, sixFrames)
+        .fromTo(partners, {autoAlpha: 0, y: '0.3rem'}, {autoAlpha: 1, y: '0rem', duration: fourtyFrames, ease: customEaseIn}, sixFrames);
 
   return timeline;
 }
@@ -59,6 +61,7 @@ const hideElements = () => {
   timeline
         .fromTo(copy, {y: '0rem'}, {y: '0.4rem', duration: fourtyFrames, ease: customEaseIn}, 0)
         .fromTo(scrollToRows, {y: '0rem'}, {y: '0.5rem', duration: fourtyFrames, ease: customEaseIn}, 0)
+        .fromTo(partners, {autoAlpha: 1, y: '0rem'}, {autoAlpha: 0, y: '0.3rem', duration: fourtyFrames, ease: customEaseIn}, 0)
         .fromTo(open, {y: '0rem'}, {y: '0.3rem', duration: fourtyFrames, ease: customEaseIn}, twoFrames)
         .fromTo(btnText, {y: '0rem'}, {y: '0.4rem', duration: fourtyFrames, ease: customEaseIn}, twoFrames)
         .fromTo(od, {x: '0rem'}, { x: '-2.2rem', duration: fiftyFrames, ease: customEaseIn}, twoFrames)
@@ -197,6 +200,23 @@ if (hWrapper && hText) {
   observer.observe(focusSection);
 })();
 
+// MARK: Credentials — the block fades up once when it comes into view.
+(() => {
+  const list = document.querySelector('.creds');
+  if (!list) return;
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        list.classList.add('animate');
+        obs.disconnect(); // reveal once, then stop observing
+      });
+    },
+    { threshold: 0.15 }
+  );
+  observer.observe(list);
+})();
+
 const servicesSection = document.querySelector('.services');
 const dialWheel = document.querySelector('.dial-wheel');
 const dialNums = gsap.utils.toArray('.dial-num');
@@ -260,7 +280,7 @@ if (servicesSection && SERVICE_COUNT > 1) {
   // right-side line icon morphs from one service's icon to the next, in sync
   // with the scrub — one morph per transition, spread across the timeline.
   const svcIcon = document.querySelector('#svc-icon');
-  const iconIds = ['#icon-ux', '#icon-web', '#icon-sec'];
+  const iconIds = ['#icon-ux', '#icon-web', '#icon-hw'];
   if (svcIcon && window.MorphSVGPlugin && iconIds.length === SERVICE_COUNT) {
     const seg = carousel.duration() / LAST;
     for (let i = 0; i < LAST; i++) {
@@ -295,19 +315,76 @@ if (processSection) {
   }
 }
 
-// MARK: Showcase — reveal the featured project card and drift the big word.
-// Created after the services pin (which sits above it) so ScrollTrigger measures
+// MARK: Showcase — a scroll-driven deck of project cards.
+// Created after the process pin (which sits above it) so ScrollTrigger measures
 // its position correctly once the pin spacers exist.
+//
+// The section pins and the scroll position maps straight onto "which card is in
+// front": card i sits at depth d = i - progress. Depth >= 0 means it is still
+// stacked (the deeper it goes the higher, smaller and dimmer it sits, so the
+// stack reads as more-work-behind before you scroll at all); depth < 0 means it
+// has been scrolled past and drops away below. Deriving every card from that one
+// number is what makes the whole thing exactly reversible on the way back up.
 const showcaseSection = document.querySelector('.showcase');
-if (showcaseSection) {
-  gsap.from('.showcase__card', {
-    y: 60,
-    autoAlpha: 0,
-    scale: 0.94,
-    duration: 1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: showcaseSection, start: 'top 78%' },
-  });
+const deck = showcaseSection && showcaseSection.querySelector('.showcase__deck');
+if (showcaseSection && deck) {
+  const cards = gsap.utils.toArray('.work-card', deck);
+  const CARDS = cards.length;
+
+  const PEEK = 10;      // % of card height each card behind pokes out above
+  const SHRINK = 0.045; // scale lost per card of depth
+  const FADE = 0.24;    // opacity lost per card of depth
+  const MAX_DEPTH = 3;  // cards deeper than this stop fanning and sit hidden
+
+  const place = (i, d) => {
+    if (d >= 0) {
+      // The fan is clamped to MAX_DEPTH so the deck stays the same compact size
+      // whether there are four projects or forty — without this the stack climbs
+      // a card-height per project and walks off the top of the section.
+      const dv = Math.min(d, MAX_DEPTH);
+      gsap.set(cards[i], {
+        yPercent: -dv * PEEK,
+        scale: 1 - dv * SHRINK,
+        autoAlpha: Math.max(0, 1 - d * FADE),
+      });
+    } else {
+      const t = Math.min(1, -d); // 0 -> 1 as the card drops away
+      gsap.set(cards[i], { yPercent: t * 150, scale: 1, autoAlpha: 1 - t });
+    }
+  };
+
+  cards.forEach((card, i) => gsap.set(card, { zIndex: CARDS - i, transformOrigin: '50% 100%' }));
+
+  const totalEl = document.querySelector('#work-total');
+  const indexEl = document.querySelector('#work-index');
+  if (totalEl) totalEl.textContent = String(CARDS).padStart(2, '0');
+
+  let front = -1;
+  const render = (p) => {
+    cards.forEach((_, i) => place(i, i - p));
+    const idx = gsap.utils.clamp(0, CARDS - 1, Math.round(p));
+    if (idx === front) return;
+    front = idx;
+    cards.forEach((c, i) => c.classList.toggle('is-front', i === idx));
+    if (indexEl) indexEl.textContent = String(idx + 1).padStart(2, '0');
+  };
+
+  render(0); // paint the resting stack before the first scroll
+
+  if (CARDS > 1) {
+    ScrollTrigger.create({
+      trigger: showcaseSection,
+      start: 'top top',
+      // 0.55 viewport heights per card — enough to feel deliberate without
+      // turning a long project list into an endless pinned section
+      end: () => '+=' + window.innerHeight * (CARDS - 1) * 0.55,
+      pin: true,
+      scrub: 0.6,
+      snap: { snapTo: 1 / (CARDS - 1), duration: 0.3, ease: 'power1.inOut' },
+      onUpdate: (self) => render(self.progress * (CARDS - 1)),
+    });
+  }
+
   // gentle horizontal parallax on the giant background word
   gsap.fromTo(
     '.showcase__bgtext',
@@ -320,6 +397,116 @@ if (showcaseSection) {
   );
 }
 
+// MARK: Timeline — an arrow travels a winding road past each event.
+// Created after the showcase pin because it sits below it on the page, and
+// ScrollTrigger has to build pinned triggers top-to-bottom.
+//
+// One sine function owns the geometry: the drawn curve, the arrow's position
+// and angle, and every event's coordinates are all read from it, so they can
+// never drift apart — including after a resize.
+const tlSection = document.querySelector('.tlpath');
+if (tlSection) {
+  const track = tlSection.querySelector('.tlpath__track');
+  const line = tlSection.querySelector('.tlpath__line');
+  const trail = tlSection.querySelector('.tlpath__trail');
+  const arrow = tlSection.querySelector('.tlpath__arrow');
+  const head = tlSection.querySelector('.tlpath__head');
+  const hint = tlSection.querySelector('.tlpath__hint');
+  const events = gsap.utils.toArray('.tlev', tlSection);
+  const COUNT = events.length;
+
+  if (COUNT > 1) {
+    const SCREENS = 4.1; // how long the road is, in viewport widths
+    const WAVES = 2.25;  // how many crests it makes along the way
+
+    let W = 0;
+    let H = 0;
+    let AMP = 0;
+    let LEN = 0;
+
+    const px = (t) => t * W;
+    // the road rides below centre so cards sitting above it clear the heading
+    const py = (t) => H * 0.56 + AMP * Math.sin(t * Math.PI * 2 * WAVES);
+    // events sit evenly along the road; the first starts well clear of the
+    // heading in the top-left corner
+    const eventT = (i) => 0.12 + (i / (COUNT - 1)) * 0.78;
+
+    const build = () => {
+      W = window.innerWidth * SCREENS;
+      H = tlSection.clientHeight;
+      // a flatter wave leaves room for a card above and below the line
+      AMP = H * 0.1;
+      track.style.width = W + 'px';
+
+      // the SVG has no viewBox, so one user unit is one CSS pixel and these
+      // coordinates line up with the absolutely positioned event nodes
+      const STEPS = 260;
+      let d = 'M' + px(0).toFixed(1) + ' ' + py(0).toFixed(1);
+      for (let i = 1; i <= STEPS; i++) {
+        const t = i / STEPS;
+        d += ' L' + px(t).toFixed(1) + ' ' + py(t).toFixed(1);
+      }
+      line.setAttribute('d', d);
+      trail.setAttribute('d', d);
+      LEN = trail.getTotalLength();
+      trail.style.strokeDasharray = LEN;
+
+      events.forEach((el, i) => {
+        const t = eventT(i);
+        el.style.left = px(t) + 'px';
+        el.style.top = py(t) + 'px';
+      });
+    };
+
+    const render = (p) => {
+      // the camera follows the arrow but never runs off either end of the road
+      const vw = window.innerWidth;
+      const tx = gsap.utils.clamp(-(W - vw), 0, -(px(p) - vw * 0.5));
+      gsap.set(track, { x: tx });
+
+      // the arrow points along the tangent, sampled just either side of it
+      const d = 0.002;
+      const t0 = Math.max(0, p - d);
+      const t1 = Math.min(1, p + d);
+      const angle = (Math.atan2(py(t1) - py(t0), px(t1) - px(t0)) * 180) / Math.PI;
+      gsap.set(arrow, { x: px(p), y: py(p), rotation: angle });
+
+      // the travelled part of the road draws itself in behind the arrow
+      trail.style.strokeDashoffset = LEN * (1 - p);
+
+      // The heading and the scroll hint are an intro, not part of the journey.
+      // Clearing them out once you set off frees the whole width for the road,
+      // which is what lets a card stay readable for far longer.
+      const setOff = p > 0.05;
+      if (head) head.classList.toggle('is-gone', setOff);
+      if (hint) hint.classList.toggle('is-gone', setOff);
+
+      events.forEach((el, i) => {
+        el.classList.toggle('is-past', p >= eventT(i) - 0.015);
+        // a card only dissolves once it is nearly off the left edge
+        el.classList.toggle('is-gone', px(eventT(i)) + tx < vw * 0.1);
+      });
+    };
+
+    build();
+    render(0);
+
+    ScrollTrigger.create({
+      trigger: tlSection,
+      start: 'top top',
+      end: () => '+=' + window.innerHeight * SCREENS * 0.8,
+      pin: true,
+      scrub: 0.6,
+      invalidateOnRefresh: true,
+      onRefresh: (self) => {
+        build();
+        render(self.progress);
+      },
+      onUpdate: (self) => render(self.progress),
+    });
+  }
+}
+
 // Build the hero intro but hold it on its first frame, so the hero stays hidden
 // behind the loading screen and only animates in once the loader is gone.
 const heroIntro = showElements().pause(0);
@@ -329,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(renderLocalTime, 1000);
 });
 
-// MARK: Loading screen — shapes morph into "MINO"; when it fades out, and only
+// MARK: Loading screen — shapes morph into "MISC"; when it fades out, and only
 // then, the hero intro plays.
 (() => {
   const loaderEl = document.getElementById('loader');
@@ -378,13 +565,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (window.MorphSVGPlugin) {
     gsap.registerPlugin(MorphSVGPlugin);
-    MorphSVGPlugin.convertToPath('#s-m, #s-i, #s-n, #s-o');
+    MorphSVGPlugin.convertToPath('#shp-m, #shp-i, #shp-s, #shp-c');
     // slow, deliberate morph
     gsap.timeline({ defaults: { ease: 'power2.inOut', duration: 1.05 }, onComplete: dismiss })
-      .to('#s-n', { morphSVG: '#n' }, 0.2)
-      .to('#s-o', { morphSVG: '#o' }, 0.65)
-      .to('#s-m', { morphSVG: '#m' }, 1.1)
-      .to('#s-i', { morphSVG: '#i' }, 1.55)
+      .to('#shp-m', { morphSVG: '#ltr-m' }, 0.2)
+      .to('#shp-i', { morphSVG: '#ltr-i' }, 0.65)
+      .to('#shp-s', { morphSVG: '#ltr-s' }, 1.1)
+      .to('#shp-c', { morphSVG: '#ltr-c' }, 1.55)
       .to({}, { duration: 1.0 }); // hold on the finished word before fading
   } else {
     // plugin failed to load — never leave the page stuck behind the loader
@@ -517,6 +704,83 @@ if (tcardLeft && tcardRight) {
     };
   });
 }
+
+// MARK: Credentials — each certificate behaves like a sheet of paper held up to
+// the light: the document leans toward the cursor and a specular highlight
+// tracks the pointer across it. Only the scan tilts, never the caption, so the
+// text stays crisp. Desktop / real-hover pointers only.
+(() => {
+  const grid = document.querySelector('.creds');
+  if (!grid) return;
+
+  // Hovering, focusing or clicking a row swaps which scan is on the stage.
+  const rows = gsap.utils.toArray('.cred__row', grid);
+  const panels = gsap.utils.toArray('.cred', grid);
+  const show = (i) => {
+    panels.forEach((p, n) => {
+      const on = n === i;
+      p.classList.toggle('is-active', on);
+      // hidden panels stay out of the accessibility tree and the tab order
+      p.toggleAttribute('aria-hidden', !on);
+      p.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', on ? '0' : '-1'));
+    });
+    rows.forEach((r, n) => {
+      r.classList.toggle('is-active', n === i);
+      r.setAttribute('aria-pressed', String(n === i));
+    });
+  };
+  rows.forEach((row, i) => {
+    row.addEventListener('pointerenter', () => show(i));
+    row.addEventListener('focus', () => show(i));
+    row.addEventListener('click', () => show(i));
+  });
+  show(0);
+
+  const certMM = gsap.matchMedia();
+  certMM.add('(min-width: 701px) and (hover: hover)', () => {
+    const docs = gsap.utils.toArray('.cred__doc', grid);
+    const MAX = 10; // max tilt in degrees
+
+    const teardown = docs.map((doc) => {
+      gsap.set(doc, { transformPerspective: 800, transformOrigin: 'center' });
+      const rotX = gsap.quickTo(doc, 'rotationX', { duration: 0.5, ease: 'power3' });
+      const rotY = gsap.quickTo(doc, 'rotationY', { duration: 0.5, ease: 'power3' });
+
+      const onMove = (e) => {
+        const r = doc.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;   // 0 … 1
+        const py = (e.clientY - r.top) / r.height;
+        rotY((px - 0.5) * MAX * 2);
+        rotX(-(py - 0.5) * MAX * 2);
+        // feeds the radial-gradient in the CSS, so the glare follows the cursor
+        doc.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+        doc.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      };
+      const onEnter = () =>
+        gsap.to(doc, { scale: 1.04, z: 40, duration: 0.4, ease: 'power3', overwrite: 'auto' });
+      const onLeave = () => {
+        rotX(0);
+        rotY(0);
+        gsap.to(doc, { scale: 1, z: 0, duration: 0.6, ease: 'power3', overwrite: 'auto' });
+      };
+
+      doc.addEventListener('pointermove', onMove);
+      doc.addEventListener('pointerenter', onEnter);
+      doc.addEventListener('pointerleave', onLeave);
+
+      return () => {
+        doc.removeEventListener('pointermove', onMove);
+        doc.removeEventListener('pointerenter', onEnter);
+        doc.removeEventListener('pointerleave', onLeave);
+        doc.style.removeProperty('--mx');
+        doc.style.removeProperty('--my');
+        gsap.set(doc, { clearProps: 'all' });
+      };
+    });
+
+    return () => teardown.forEach((fn) => fn());
+  });
+})();
 
 // MARK: Pricing — 3D tilt on hover. The card leans toward the cursor (in real
 // perspective) and lifts slightly; it eases back to flat on leave. Desktop /

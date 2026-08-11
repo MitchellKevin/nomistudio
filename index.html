@@ -8,37 +8,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="nomi-logo.svg">
     <link rel="stylesheet" href="nomi-studio.css">
-    <title>NOMI STUDIO</title>
+    <title>MISC STUDIO</title>
 </head>
 <body>
   <!-- Loading screen: geometric shapes morph into "NOMI" (GSAP MorphSVG) -->
   <div class="loader" id="loader">
-    <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" aria-label="NOMI Studio">
+    <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" aria-label="MISC Studio">
       <defs>
         <linearGradient id="mino-grad" x1="44.8" y1="200" x2="715.2" y2="200" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#3d8fdd"></stop>
-          <stop offset="1" stop-color="#0065c4"></stop>
+          <stop offset="0" stop-color="#ffffff"></stop>
+          <stop offset="1" stop-color="#8f8f8f"></stop>
         </linearGradient>
-        <g id="nomi-letters">
-          <path id="n" d="M60.43246930422919 125.0H103.71350613915416L160.193724420191 207.98090040927696V125.0H203.88403819918145V275.0H160.193724420191L104.02046384720327 192.63301500682127V275.0H60.43246930422919Z"></path>
-          <path id="o" d="M242.849931787176 200.10231923601637Q242.849931787176 163.36971350613914 263.3137789904502 142.90586630286492Q283.7776261937244 122.44201909959071 320.3055934515689 122.44201909959071Q357.7544338335607 122.44201909959071 378.0136425648022 142.54774897680764Q398.27285129604365 162.65347885402457 398.27285129604365 198.8744884038199Q398.27285129604365 225.17053206002728 389.42223738062756 242.0020463847203Q380.5716234652115 258.83356070941335 363.8424283765348 268.1957708049113Q347.1132332878581 277.5579809004093 322.14733969986355 277.5579809004093Q296.77216916780355 277.5579809004093 280.14529331514325 269.47476125511594Q263.51841746248294 261.39154160982264 253.18417462482947 243.8949522510232Q242.849931787176 226.39836289222373 242.849931787176 200.10231923601637ZM289.2005457025921 200.3069577080491Q289.2005457025921 223.0218281036835 297.6418826739427 232.9467939972715Q306.0832196452933 242.8717598908595 320.612551159618 242.8717598908595Q335.55115961800817 242.8717598908595 343.73669849931787 233.15143246930424Q351.92223738062756 223.43110504774899 351.92223738062756 198.26057298772167Q351.92223738062756 177.0804911323329 343.3785811732606 167.30900409276944Q334.8349249658936 157.537517053206 320.20327421555254 157.537517053206Q306.1855388813097 157.537517053206 297.69304229195086 167.46248294679398Q289.2005457025921 177.38744884038198 289.2005457025921 200.3069577080491Z"></path>
-          <path id="m" d="M436.72714870395635 125.0H497.7094133697135L521.2428376534789 216.268758526603L544.6739427012278 125.0H605.4515688949523V275.0H567.5934515688949V160.60709413369713L538.2278308321964 275.0H503.95088676671213L474.68758526603 160.60709413369713V275.0H436.72714870395635Z"></path>
-          <path id="i" d="M650.8635743519782 125.0H697.3165075034107V275.0H650.8635743519782Z"></path>
+        <!-- MISC in Poppins Bold, glyph outlines taken straight from the font so
+             the four letters stay consistent with each other. Cap height spans
+             y 125-275; S and C overshoot slightly, as round letters should. -->
+        <g id="misc-letters">
+          <path id="ltr-m" d="M212.33 125L255.28 125L255.28 275L218.74 275L218.74 185.04L185.20 275L155.71 275L121.95 184.83L121.95 275L85.41 275L85.41 125L128.57 125L170.67 228.85Z"></path>
+          <path id="ltr-i" d="M300.96 125L337.50 125L337.50 275L300.96 275Z"></path>
+          <path id="ltr-s" d="M437.67 276.50Q421.22 276.50 408.18 271.15Q395.15 265.81 387.35 255.34Q379.55 244.87 379.12 230.13L418.01 230.13Q418.87 238.46 423.78 242.84Q428.70 247.22 436.60 247.22Q444.72 247.22 449.42 243.48Q454.12 239.74 454.12 233.12Q454.12 227.56 450.38 223.93Q446.64 220.30 441.20 217.95Q435.75 215.60 425.70 212.61Q411.17 208.12 401.99 203.63Q392.80 199.15 386.17 190.38Q379.55 181.62 379.55 167.52Q379.55 146.58 394.72 134.72Q409.89 122.86 434.25 122.86Q459.04 122.86 474.21 134.72Q489.38 146.58 490.45 167.74L450.92 167.74Q450.49 160.47 445.58 156.30Q440.66 152.14 432.97 152.14Q426.35 152.14 422.29 155.66Q418.23 159.19 418.23 165.81Q418.23 173.08 425.06 177.14Q431.90 181.20 446.43 185.90Q460.96 190.81 470.04 195.30Q479.12 199.79 485.75 208.33Q492.37 216.88 492.37 230.34Q492.37 243.16 485.85 253.63Q479.34 264.10 466.94 270.30Q454.55 276.50 437.67 276.50Z"></path>
+          <path id="ltr-c" d="M528.01 199.79Q528.01 177.56 537.63 160.15Q547.24 142.74 564.44 133.01Q581.64 123.29 603.44 123.29Q630.15 123.29 649.16 137.39Q668.18 151.50 674.59 175.85L634.42 175.85Q629.93 166.45 621.71 161.54Q613.48 156.62 603.01 156.62Q586.13 156.62 575.66 168.38Q565.19 180.13 565.19 199.79Q565.19 219.44 575.66 231.20Q586.13 242.95 603.01 242.95Q613.48 242.95 621.71 238.03Q629.93 233.12 634.42 223.72L674.59 223.72Q668.18 248.08 649.16 262.07Q630.15 276.07 603.44 276.07Q581.64 276.07 564.44 266.35Q547.24 256.62 537.63 239.32Q528.01 222.01 528.01 199.79Z"></path>
         </g>
       </defs>
-      <rect id="s-n" fill="url(#mino-grad)" x="89.6" y="157.5" width="85" height="85"></rect>
-      <circle id="s-o" fill="url(#mino-grad)" cx="320.6" cy="200" r="42.5"></circle>
-      <polygon id="s-m" fill="url(#mino-grad)" points="520.8,157.5 478.3,242.5 563.3,242.5"></polygon>
-      <polygon id="s-i" fill="url(#mino-grad)" points="674.4,157.5 716.9,200 674.4,242.5 631.9,200"></polygon>
-      <text id="loader-studio" x="386" y="342" text-anchor="middle" fill="url(#mino-grad)">STUDIO</text>
+      <!-- each shape sits centred on the letter it morphs into -->
+      <rect id="shp-m" fill="url(#mino-grad)" x="127.84" y="157.5" width="85" height="85"></rect>
+      <polygon id="shp-i" fill="url(#mino-grad)" points="319.23,157.5 361.73,200 319.23,242.5 276.73,200"></polygon>
+      <polygon id="shp-s" fill="url(#mino-grad)" points="435.75,157.5 393.25,242.5 478.25,242.5"></polygon>
+      <circle id="shp-c" fill="url(#mino-grad)" cx="601.30" cy="200" r="42.5"></circle>
+      <text id="loader-studio" x="380" y="342" text-anchor="middle" fill="url(#mino-grad)">STUDIO</text>
     </svg>
   </div>
 
   <!-- Wave transition that sweeps up to reveal the page when the loader ends -->
   <div class="loader-wave" id="loader-wave" aria-hidden="true">
     <svg class="loader-wave__svg" viewBox="0 0 1440 1520" preserveAspectRatio="none">
-      <path fill="#6db8e6" d="M0.0 101.4 L30.0 118.0 L60.0 129.6 L90.0 134.8 L120.0 132.9 L150.0 124.1 L180.0 109.5 L210.0 91.2 L240.0 71.3 L270.0 52.6 L300.0 37.5 L330.0 27.9 L360.0 25.0 L390.0 29.3 L420.0 40.2 L450.0 56.3 L480.0 75.4 L510.0 95.2 L540.0 112.9 L570.0 126.4 L600.0 133.9 L630.0 134.3 L660.0 127.7 L690.0 114.9 L720.0 97.6 L750.0 77.9 L780.0 58.6 L810.0 42.0 L840.0 30.4 L870.0 25.2 L900.0 27.1 L930.0 35.9 L960.0 50.5 L990.0 68.8 L1020.0 88.7 L1050.0 107.4 L1080.0 122.5 L1110.0 132.1 L1140.0 135.0 L1170.0 130.7 L1200.0 119.8 L1230.0 103.7 L1260.0 84.6 L1290.0 64.8 L1320.0 47.1 L1350.0 33.6 L1380.0 26.1 L1410.0 25.7 L1440.0 32.3 L1440.0 1407.1 L1410.0 1408.6 L1380.0 1415.3 L1350.0 1426.4 L1320.0 1440.7 L1290.0 1456.6 L1260.0 1472.4 L1230.0 1486.2 L1200.0 1496.5 L1170.0 1502.1 L1140.0 1502.5 L1110.0 1497.5 L1080.0 1487.8 L1050.0 1474.3 L1020.0 1458.7 L990.0 1442.7 L960.0 1428.1 L930.0 1416.5 L900.0 1409.2 L870.0 1407.0 L840.0 1410.3 L810.0 1418.5 L780.0 1430.9 L750.0 1445.9 L720.0 1462.0 L690.0 1477.3 L660.0 1490.1 L630.0 1498.9 L600.0 1502.9 L570.0 1501.4 L540.0 1494.7 L510.0 1483.6 L480.0 1469.3 L450.0 1453.4 L420.0 1437.6 L390.0 1423.8 L360.0 1413.5 L330.0 1407.9 L300.0 1407.5 L270.0 1412.5 L240.0 1422.2 L210.0 1435.7 L180.0 1451.3 L150.0 1467.3 L120.0 1481.9 L90.0 1493.5 L60.0 1500.8 L30.0 1503.0 L0.0 1499.7 Z"></path>
-      <path fill="#0065c4" d="M0.0 240.3 L30.0 246.8 L60.0 244.0 L90.0 232.1 L120.0 213.1 L150.0 189.8 L180.0 165.8 L210.0 144.7 L240.0 129.7 L270.0 123.2 L300.0 126.0 L330.0 137.9 L360.0 156.9 L390.0 180.2 L420.0 204.2 L450.0 225.3 L480.0 240.3 L510.0 246.8 L540.0 244.0 L570.0 232.1 L600.0 213.1 L630.0 189.8 L660.0 165.8 L690.0 144.7 L720.0 129.7 L750.0 123.2 L780.0 126.0 L810.0 137.9 L840.0 156.9 L870.0 180.2 L900.0 204.2 L930.0 225.3 L960.0 240.3 L990.0 246.8 L1020.0 244.0 L1050.0 232.1 L1080.0 213.1 L1110.0 189.8 L1140.0 165.8 L1170.0 144.7 L1200.0 129.7 L1230.0 123.2 L1260.0 126.0 L1290.0 137.9 L1320.0 156.9 L1350.0 180.2 L1380.0 204.2 L1410.0 225.3 L1440.0 240.3 L1440.0 1305.2 L1410.0 1300.1 L1380.0 1302.8 L1350.0 1312.8 L1320.0 1329.1 L1290.0 1349.3 L1260.0 1370.9 L1230.0 1391.1 L1200.0 1407.3 L1170.0 1417.3 L1140.0 1419.9 L1110.0 1414.7 L1080.0 1402.3 L1050.0 1384.5 L1020.0 1363.5 L990.0 1342.0 L960.0 1322.9 L930.0 1308.6 L900.0 1301.0 L870.0 1301.0 L840.0 1308.7 L810.0 1323.1 L780.0 1342.3 L750.0 1363.7 L720.0 1384.7 L690.0 1402.5 L660.0 1414.8 L630.0 1419.9 L600.0 1417.2 L570.0 1407.2 L540.0 1390.9 L510.0 1370.7 L480.0 1349.1 L450.0 1328.9 L420.0 1312.7 L390.0 1302.7 L360.0 1300.1 L330.0 1305.3 L300.0 1317.7 L270.0 1335.5 L240.0 1356.5 L210.0 1378.0 L180.0 1397.1 L150.0 1411.4 L120.0 1419.0 L90.0 1419.0 L60.0 1411.3 L30.0 1396.9 L0.0 1377.7 Z"></path>
+      <path fill="#3a3a3a" d="M0.0 101.4 L30.0 118.0 L60.0 129.6 L90.0 134.8 L120.0 132.9 L150.0 124.1 L180.0 109.5 L210.0 91.2 L240.0 71.3 L270.0 52.6 L300.0 37.5 L330.0 27.9 L360.0 25.0 L390.0 29.3 L420.0 40.2 L450.0 56.3 L480.0 75.4 L510.0 95.2 L540.0 112.9 L570.0 126.4 L600.0 133.9 L630.0 134.3 L660.0 127.7 L690.0 114.9 L720.0 97.6 L750.0 77.9 L780.0 58.6 L810.0 42.0 L840.0 30.4 L870.0 25.2 L900.0 27.1 L930.0 35.9 L960.0 50.5 L990.0 68.8 L1020.0 88.7 L1050.0 107.4 L1080.0 122.5 L1110.0 132.1 L1140.0 135.0 L1170.0 130.7 L1200.0 119.8 L1230.0 103.7 L1260.0 84.6 L1290.0 64.8 L1320.0 47.1 L1350.0 33.6 L1380.0 26.1 L1410.0 25.7 L1440.0 32.3 L1440.0 1407.1 L1410.0 1408.6 L1380.0 1415.3 L1350.0 1426.4 L1320.0 1440.7 L1290.0 1456.6 L1260.0 1472.4 L1230.0 1486.2 L1200.0 1496.5 L1170.0 1502.1 L1140.0 1502.5 L1110.0 1497.5 L1080.0 1487.8 L1050.0 1474.3 L1020.0 1458.7 L990.0 1442.7 L960.0 1428.1 L930.0 1416.5 L900.0 1409.2 L870.0 1407.0 L840.0 1410.3 L810.0 1418.5 L780.0 1430.9 L750.0 1445.9 L720.0 1462.0 L690.0 1477.3 L660.0 1490.1 L630.0 1498.9 L600.0 1502.9 L570.0 1501.4 L540.0 1494.7 L510.0 1483.6 L480.0 1469.3 L450.0 1453.4 L420.0 1437.6 L390.0 1423.8 L360.0 1413.5 L330.0 1407.9 L300.0 1407.5 L270.0 1412.5 L240.0 1422.2 L210.0 1435.7 L180.0 1451.3 L150.0 1467.3 L120.0 1481.9 L90.0 1493.5 L60.0 1500.8 L30.0 1503.0 L0.0 1499.7 Z"></path>
+      <path fill="#1c1c1c" d="M0.0 240.3 L30.0 246.8 L60.0 244.0 L90.0 232.1 L120.0 213.1 L150.0 189.8 L180.0 165.8 L210.0 144.7 L240.0 129.7 L270.0 123.2 L300.0 126.0 L330.0 137.9 L360.0 156.9 L390.0 180.2 L420.0 204.2 L450.0 225.3 L480.0 240.3 L510.0 246.8 L540.0 244.0 L570.0 232.1 L600.0 213.1 L630.0 189.8 L660.0 165.8 L690.0 144.7 L720.0 129.7 L750.0 123.2 L780.0 126.0 L810.0 137.9 L840.0 156.9 L870.0 180.2 L900.0 204.2 L930.0 225.3 L960.0 240.3 L990.0 246.8 L1020.0 244.0 L1050.0 232.1 L1080.0 213.1 L1110.0 189.8 L1140.0 165.8 L1170.0 144.7 L1200.0 129.7 L1230.0 123.2 L1260.0 126.0 L1290.0 137.9 L1320.0 156.9 L1350.0 180.2 L1380.0 204.2 L1410.0 225.3 L1440.0 240.3 L1440.0 1305.2 L1410.0 1300.1 L1380.0 1302.8 L1350.0 1312.8 L1320.0 1329.1 L1290.0 1349.3 L1260.0 1370.9 L1230.0 1391.1 L1200.0 1407.3 L1170.0 1417.3 L1140.0 1419.9 L1110.0 1414.7 L1080.0 1402.3 L1050.0 1384.5 L1020.0 1363.5 L990.0 1342.0 L960.0 1322.9 L930.0 1308.6 L900.0 1301.0 L870.0 1301.0 L840.0 1308.7 L810.0 1323.1 L780.0 1342.3 L750.0 1363.7 L720.0 1384.7 L690.0 1402.5 L660.0 1414.8 L630.0 1419.9 L600.0 1417.2 L570.0 1407.2 L540.0 1390.9 L510.0 1370.7 L480.0 1349.1 L450.0 1328.9 L420.0 1312.7 L390.0 1302.7 L360.0 1300.1 L330.0 1305.3 L300.0 1317.7 L270.0 1335.5 L240.0 1356.5 L210.0 1378.0 L180.0 1397.1 L150.0 1411.4 L120.0 1419.0 L90.0 1419.0 L60.0 1411.3 L30.0 1396.9 L0.0 1377.7 Z"></path>
     </svg>
   </div>
 
@@ -57,8 +61,8 @@
       <div class="logo-wrap">
         <img class="logo-img" src="nomi-logo.svg" alt="">
         <div class="logo-text">
-          <span class="btn-2">NOMI</span>
-          <span class="btn-2">STUDIO</span>
+          <span class="btn-2">MITCHELL</span>
+          <span class="btn-2">SCHOLTE</span>
         </div>
       </div>
       <ul class="header-menu">
@@ -89,12 +93,35 @@
           </div>
         </div>
         <div class="first-desc">
-          <span class="desc-1">Design, build and secure</span>
+          <span class="desc-1">Creative Developer</span>
         </div>
       </div>
 
       <div class="copyright">
           <span class="desc-1" id="local-time">Netherlands</span>
+      </div>
+
+      <!-- Companies worked with. Same two-group trick as the techstack marquee:
+           the row holds the list twice and slides left by exactly half its width,
+           so the loop is seamless. The second group is aria-hidden so screen
+           readers only hear each company once.
+           Logos are flattened to white in CSS. bia.jpg is the odd one out — a
+           JPEG with no alpha, a light mark on solid black — so it carries the
+           --opaque modifier and gets a different treatment. alt="" throughout
+           because the company name sits right next to each logo as real text. -->
+      <div class="partners" aria-label="Companies I have worked with">
+        <div class="partners__row">
+          <div class="partners__group">
+            <span class="partner"><span class="partner__mark"><img src="logo-company/hva-logo.png" alt=""></span><span class="partner__name">Hogeschool van Amsterdam</span></span>
+            <span class="partner"><span class="partner__mark partner__mark--opaque"><img src="logo-company/bia.jpg" alt=""></span><span class="partner__name">Build in Amsterdam</span></span>
+            <span class="partner"><span class="partner__mark"><img src="logo-company/ecocharting.png" alt=""></span><span class="partner__name">Ecocharting</span></span>
+          </div>
+          <div class="partners__group" aria-hidden="true">
+            <span class="partner"><span class="partner__mark"><img src="logo-company/hva-logo.png" alt=""></span><span class="partner__name">Hogeschool van Amsterdam</span></span>
+            <span class="partner"><span class="partner__mark partner__mark--opaque"><img src="logo-company/bia.jpg" alt=""></span><span class="partner__name">Build in Amsterdam</span></span>
+            <span class="partner"><span class="partner__mark"><img src="logo-company/ecocharting.png" alt=""></span><span class="partner__name">Ecocharting</span></span>
+          </div>
+        </div>
       </div>
       <a class="book-btn blob-btn" href="#contact" aria-label="Get in touch">
         <div class="book-btn__circle"></div>
@@ -119,10 +146,8 @@
     <h3 class="Horizontal__text heading-xl">We design brands, craft interfaces, build websites, and secure products.</h3>
   </section>
 
-  <section class="testimonials">
+  <!-- <section class="testimonials">
     <div class="container testimonials__container">
-      <!-- <h2 class="testimonials__title">Different expertise,<br>builds a strong team</h2>
-      <span class="focus__eyebrow">What we focus on</span> -->
     <h2 class="testimonials__title">Different expertise, <br>builds a <span class="focus__title-accent">strong team</span></h2>
 
       <div class="tcards">
@@ -156,7 +181,7 @@
         <span class="tcards-hint__arrow">›</span>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="focus" id="focusPoints">
     <span class="focus__eyebrow">What we focus on</span>
@@ -168,19 +193,19 @@
           <svg class="focus-illustration" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid meet">
             <defs>
               <radialGradient id="brainGrad" cx="0.5" cy="0.45" r="0.6">
-                <stop offset="0" stop-color="#0065c4" stop-opacity="0.12"/>
-                <stop offset="1" stop-color="#0065c4" stop-opacity="0.02"/>
+                <stop offset="0" stop-color="#9a9a9a" stop-opacity="0.12"/>
+                <stop offset="1" stop-color="#9a9a9a" stop-opacity="0.02"/>
               </radialGradient>
             </defs>
             <!-- brain silhouette -->
             <path class="brain-outline"
                   d="M100,28 C112,22 128,24 134,34 C146,32 154,44 150,55 C160,60 160,74 150,80 C152,92 140,100 128,96 C120,103 108,102 100,97 C92,102 80,103 72,96 C60,100 48,92 50,80 C40,74 40,60 50,55 C46,44 54,32 66,34 C72,24 88,22 100,28 Z"
-                  fill="url(#brainGrad)" stroke="#0065c4" stroke-width="1.8" stroke-linejoin="round"/>
+                  fill="url(#brainGrad)" stroke="#9a9a9a" stroke-width="1.8" stroke-linejoin="round"/>
             <!-- central groove between the hemispheres -->
             <path class="brain-groove" d="M100,30 C96,42 104,50 100,62 C96,74 104,84 100,95"
-                  fill="none" stroke="#4f9be0" stroke-width="1.4" stroke-linecap="round"/>
+                  fill="none" stroke="#c8c8c8" stroke-width="1.4" stroke-linecap="round"/>
             <!-- folds -->
-            <g class="brain-folds" fill="none" stroke="#7fb4e6" stroke-width="1.3" stroke-linecap="round">
+            <g class="brain-folds" fill="none" stroke="#7a7a7a" stroke-width="1.3" stroke-linecap="round">
               <path d="M64,44 C74,48 76,56 70,62"/>
               <path d="M58,62 C68,64 70,72 62,78"/>
               <path d="M76,70 C84,72 84,80 78,86"/>
@@ -189,13 +214,13 @@
               <path d="M124,70 C116,72 116,80 122,86"/>
             </g>
             <!-- firing synapses -->
-            <circle class="synapse s1" cx="70"  cy="62" r="3.2" fill="#0065c4"/>
-            <circle class="synapse s2" cx="62"  cy="78" r="3.2" fill="#0065c4"/>
-            <circle class="synapse s3" cx="78"  cy="86" r="3.2" fill="#0065c4"/>
-            <circle class="synapse s4" cx="130" cy="62" r="3.2" fill="#0065c4"/>
-            <circle class="synapse s5" cx="138" cy="78" r="3.2" fill="#0065c4"/>
-            <circle class="synapse s6" cx="122" cy="86" r="3.2" fill="#0065c4"/>
-            <circle class="synapse s7" cx="100" cy="62" r="3.6" fill="#a7ccef"/>
+            <circle class="synapse s1" cx="70"  cy="62" r="3.2" fill="#b8b8b8"/>
+            <circle class="synapse s2" cx="62"  cy="78" r="3.2" fill="#b8b8b8"/>
+            <circle class="synapse s3" cx="78"  cy="86" r="3.2" fill="#b8b8b8"/>
+            <circle class="synapse s4" cx="130" cy="62" r="3.2" fill="#b8b8b8"/>
+            <circle class="synapse s5" cx="138" cy="78" r="3.2" fill="#b8b8b8"/>
+            <circle class="synapse s6" cx="122" cy="86" r="3.2" fill="#b8b8b8"/>
+            <circle class="synapse s7" cx="100" cy="62" r="3.6" fill="#e8e8e8"/>
           </svg>
         </div>
         <div class="focus-text">
@@ -209,11 +234,11 @@
           <svg class="focus-illustration" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid meet">
             <defs>
               <radialGradient id="coreGrad" cx="0.5" cy="0.5" r="0.5">
-                <stop offset="0"  stop-color="#a7ccef"/>
-                <stop offset="1"  stop-color="#0065c4"/>
+                <stop offset="0"  stop-color="#e8e8e8"/>
+                <stop offset="1"  stop-color="#9a9a9a"/>
               </radialGradient>
             </defs>
-            <g class="spokes" stroke="#0065c4" stroke-width="1" opacity="0.45">
+            <g class="spokes" stroke="#9a9a9a" stroke-width="1" opacity="0.45">
               <line x1="100" y1="65" x2="30"  y2="20"/>
               <line x1="100" y1="65" x2="170" y2="20"/>
               <line x1="100" y1="65" x2="20"  y2="65"/>
@@ -221,15 +246,15 @@
               <line x1="100" y1="65" x2="30"  y2="110"/>
               <line x1="100" y1="65" x2="170" y2="110"/>
             </g>
-            <circle class="ring r1" cx="100" cy="65" r="22" fill="none" stroke="#0065c4" stroke-width="1.2" opacity="0.6"/>
-            <circle class="ring r2" cx="100" cy="65" r="34" fill="none" stroke="#0065c4" stroke-width="1"   opacity="0.35"/>
-            <circle class="ring r3" cx="100" cy="65" r="46" fill="none" stroke="#0065c4" stroke-width="1"   opacity="0.18"/>
-            <circle class="node n1" cx="30"  cy="20"  r="4" fill="#4f9be0"/>
-            <circle class="node n2" cx="170" cy="20"  r="4" fill="#4f9be0"/>
-            <circle class="node n3" cx="20"  cy="65"  r="4" fill="#4f9be0"/>
-            <circle class="node n4" cx="180" cy="65"  r="4" fill="#4f9be0"/>
-            <circle class="node n5" cx="30"  cy="110" r="4" fill="#4f9be0"/>
-            <circle class="node n6" cx="170" cy="110" r="4" fill="#4f9be0"/>
+            <circle class="ring r1" cx="100" cy="65" r="22" fill="none" stroke="#9a9a9a" stroke-width="1.2" opacity="0.6"/>
+            <circle class="ring r2" cx="100" cy="65" r="34" fill="none" stroke="#9a9a9a" stroke-width="1"   opacity="0.35"/>
+            <circle class="ring r3" cx="100" cy="65" r="46" fill="none" stroke="#9a9a9a" stroke-width="1"   opacity="0.18"/>
+            <circle class="node n1" cx="30"  cy="20"  r="4" fill="#c8c8c8"/>
+            <circle class="node n2" cx="170" cy="20"  r="4" fill="#c8c8c8"/>
+            <circle class="node n3" cx="20"  cy="65"  r="4" fill="#c8c8c8"/>
+            <circle class="node n4" cx="180" cy="65"  r="4" fill="#c8c8c8"/>
+            <circle class="node n5" cx="30"  cy="110" r="4" fill="#c8c8c8"/>
+            <circle class="node n6" cx="170" cy="110" r="4" fill="#c8c8c8"/>
             <circle cx="100" cy="65" r="11" fill="url(#coreGrad)"/>
           </svg>
         </div>
@@ -243,25 +268,25 @@
         <div class="focus-art" aria-hidden="true">
           <svg class="focus-illustration" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid meet">
             <g class="device device-monitor">
-              <rect x="14" y="25" width="80" height="58" rx="4" fill="rgba(0,101,196,0.06)" stroke="#0065c4" stroke-width="1.6"/>
-              <line x1="42" y1="93" x2="66" y2="93" stroke="#0065c4" stroke-width="2" stroke-linecap="round"/>
-              <line x1="22" y1="34" x2="56" y2="34" stroke="#0065c4" stroke-width="1.4" opacity="0.7"/>
-              <line x1="22" y1="42" x2="40" y2="42" stroke="#0065c4" stroke-width="1.4" opacity="0.4"/>
-              <rect x="22" y="54" width="28" height="20" rx="2" fill="#0065c4" opacity="0.2"/>
-              <rect x="54" y="54" width="28" height="20" rx="2" fill="#0065c4" opacity="0.2"/>
+              <rect x="14" y="25" width="80" height="58" rx="4" fill="rgba(200,200,200,0.07)" stroke="#9a9a9a" stroke-width="1.6"/>
+              <line x1="42" y1="93" x2="66" y2="93" stroke="#9a9a9a" stroke-width="2" stroke-linecap="round"/>
+              <line x1="22" y1="34" x2="56" y2="34" stroke="#9a9a9a" stroke-width="1.4" opacity="0.7"/>
+              <line x1="22" y1="42" x2="40" y2="42" stroke="#9a9a9a" stroke-width="1.4" opacity="0.4"/>
+              <rect x="22" y="54" width="28" height="20" rx="2" fill="#b8b8b8" opacity="0.2"/>
+              <rect x="54" y="54" width="28" height="20" rx="2" fill="#b8b8b8" opacity="0.2"/>
             </g>
             <g class="device device-tablet">
-              <rect x="106" y="32" width="42" height="58" rx="4" fill="rgba(0,101,196,0.06)" stroke="#0065c4" stroke-width="1.6"/>
-              <line x1="112" y1="40" x2="138" y2="40" stroke="#0065c4" stroke-width="1.4" opacity="0.7"/>
-              <line x1="112" y1="46" x2="128" y2="46" stroke="#0065c4" stroke-width="1.4" opacity="0.4"/>
-              <rect x="112" y="58" width="26" height="22" rx="2" fill="#0065c4" opacity="0.2"/>
-              <circle cx="127" cy="86" r="1.4" fill="#0065c4"/>
+              <rect x="106" y="32" width="42" height="58" rx="4" fill="rgba(200,200,200,0.07)" stroke="#9a9a9a" stroke-width="1.6"/>
+              <line x1="112" y1="40" x2="138" y2="40" stroke="#9a9a9a" stroke-width="1.4" opacity="0.7"/>
+              <line x1="112" y1="46" x2="128" y2="46" stroke="#9a9a9a" stroke-width="1.4" opacity="0.4"/>
+              <rect x="112" y="58" width="26" height="22" rx="2" fill="#b8b8b8" opacity="0.2"/>
+              <circle cx="127" cy="86" r="1.4" fill="#b8b8b8"/>
             </g>
             <g class="device device-phone">
-              <rect x="160" y="40" width="26" height="50" rx="4" fill="rgba(0,101,196,0.06)" stroke="#0065c4" stroke-width="1.6"/>
-              <line x1="166" y1="48" x2="180" y2="48" stroke="#0065c4" stroke-width="1.4" opacity="0.7"/>
-              <rect x="166" y="55" width="14" height="22" rx="2" fill="#0065c4" opacity="0.2"/>
-              <circle cx="173" cy="86" r="1.2" fill="#0065c4"/>
+              <rect x="160" y="40" width="26" height="50" rx="4" fill="rgba(200,200,200,0.07)" stroke="#9a9a9a" stroke-width="1.6"/>
+              <line x1="166" y1="48" x2="180" y2="48" stroke="#9a9a9a" stroke-width="1.4" opacity="0.7"/>
+              <rect x="166" y="55" width="14" height="22" rx="2" fill="#b8b8b8" opacity="0.2"/>
+              <circle cx="173" cy="86" r="1.2" fill="#b8b8b8"/>
             </g>
           </svg>
         </div>
@@ -325,14 +350,14 @@
             <a class="service__link" href="detail-pages/services/web-development.html">View service <span class="service__arrow">→</span></a>
           </article>
           <article class="service">
-            <h2 class="service__title">Security Assessment</h2>
-            <p class="service__desc">We stress-test your stack for weaknesses — thorough audits and penetration testing that keep your product and your users protected.</p>
+            <h2 class="service__title">Hardware Engineering</h2>
+            <p class="service__desc">We design the electronics behind the product — schematics, PCB layout and firmware, taken from breadboard to a board that is ready to manufacture.</p>
             <ul class="service__pills">
-              <li class="pill">Pen Testing</li>
-              <li class="pill">Code Audit</li>
-              <li class="pill">Hardening</li>
+              <li class="pill">PCB Design</li>
+              <li class="pill">Firmware</li>
+              <li class="pill">Prototyping</li>
             </ul>
-            <a class="service__link" href="detail-pages/services/security-assessment.html">View service <span class="service__arrow">→</span></a>
+            <a class="service__link" href="detail-pages/services/hardware-engineering.html">View service <span class="service__arrow">→</span></a>
           </article>
         </div>
       </div>
@@ -343,7 +368,7 @@
           <defs>
             <path id="icon-ux" d="M3.5 4.5H10.5V11.5H3.5Z M3.5 14H10.5V19.5H3.5Z M13.5 4.5H20.5V19.5H13.5Z"></path>
             <path id="icon-web" d="M9 8l-4 4 4 4M15 8l4 4-4 4"></path>
-            <path id="icon-sec" d="M12 3l7 2.5v5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5v-5z"></path>
+            <path id="icon-hw" d="M7 7H17V17H7Z M10 3V7 M14 3V7 M10 17V21 M14 17V21 M3 10H7 M3 14H7 M17 10H21 M17 14H21"></path>
           </defs>
           <path id="svc-icon" class="svc-icon" d="M3.5 4.5H10.5V11.5H3.5Z M3.5 14H10.5V19.5H3.5Z M13.5 4.5H20.5V19.5H13.5Z"></path>
         </svg>
@@ -401,8 +426,8 @@
           <span class="process__bignum" aria-hidden="true">04</span>
           <div class="process__content">
             <span class="process__step-label">Step 04</span>
-            <h3 class="process__title">Secure</h3>
-            <p class="process__desc">We stress-test the result with audits, hardening and penetration testing.</p>
+            <h3 class="process__title">Prototype</h3>
+            <p class="process__desc">We bring the hardware up on the bench and prove the design on real boards.</p>
           </div>
         </article>
         <article class="process__step">
@@ -427,10 +452,280 @@
         <span class="showcase__label">Projects</span>
         <h2 class="showcase__title">Recent work</h2>
       </div>
-      <a class="showcase__card" href="https://mitchellkevin.github.io/scholtes-klusbedrijf/" aria-label="Scholtes Klusbedrijf — view project">
-        <img src="scholtes-klusbedrijf.png" alt="Scholtes Klusbedrijf website">
-        <span class="showcase__badge">Scholtes Klusbedrijf <span class="showcase__arrow">↗</span></span>
-      </a>
+      <!-- Scroll-driven deck. DOM order = stack order: the first card is the one
+           in front, the rest peek out above it. Add a project by dropping in
+           another .work-card — the JS reads however many are here. -->
+      <div class="showcase__deck">
+        <a class="work-card" href="https://mitchellkevin.github.io/scholtes-klusbedrijf/" target="_blank" rel="noopener" aria-label="Scholtes Klusbedrijf — view project">
+          <img src="project-images/scholtes-klusbedrijf.png" alt="Scholtes Klusbedrijf">
+          <span class="work-card__meta">Scholtes Klusbedrijf <span class="showcase__arrow">↗</span></span>
+        </a>
+
+        <a class="work-card" href="https://www.day-to-day.nl/" target="_blank" rel="noopener" aria-label="D2D — view project">
+          <img src="project-images/d2d.png" alt="D2D">
+          <span class="work-card__meta">D2D <span class="showcase__arrow">↗</span></span>
+        </a>
+        <a class="work-card" href="https://vis-b05f.onrender.com/" target="_blank" rel="noopener" aria-label="Visdeurbel — view project">
+          <img src="project-images/visdeurbel.png" alt="Visdeurbel">
+          <span class="work-card__meta">Visdeurbel <span class="showcase__arrow">↗</span></span>
+        </a>
+        <a class="work-card" href="https://wdd-api-scholte.onrender.com/" target="_blank" rel="noopener" aria-label="CMD Casino — view project">
+          <img src="project-images/CMD-casino.png" alt="CMD Casino">
+          <span class="work-card__meta">CMD Casino <span class="showcase__arrow">↗</span></span>
+        </a>
+        <a class="work-card" href="https://mitchellkevin.github.io/HCD/" target="_blank" rel="noopener" aria-label="HCD — view project">
+          <img src="project-images/HCD.png" alt="HCD">
+          <span class="work-card__meta">HCD <span class="showcase__arrow">↗</span></span>
+        </a>
+        <a class="work-card" href="https://mitchellkevin.github.io/Space/" target="_blank" rel="noopener" aria-label="Hackathon — view project">
+          <img src="project-images/hackathon.png" alt="Hackathon">
+          <span class="work-card__meta">Hackathon <span class="showcase__arrow">↗</span></span>
+        </a>
+        <a class="work-card" href="https://mitchellkevin.github.io/PersonalInfoSite/" target="_blank" rel="noopener" aria-label="Mitchopoly — view project">
+          <img src="project-images/mitchopoly.png" alt="Mitchopoly">
+          <span class="work-card__meta">Mitchopoly <span class="showcase__arrow">↗</span></span>
+        </a>
+      </div>
+
+      <div class="showcase__counter"><b id="work-index">01</b> / <span id="work-total">04</span></div>
+    </div>
+  </section>
+
+  <!-- Timeline. The arrow travels a winding path past each event; the curve,
+       the arrow and every event position are generated from one sine function
+       in nomi-studio.js, so they cannot drift apart. -->
+  <section class="tlpath" id="timeline">
+    <div class="tlpath__head">
+      <span class="tlpath__eyebrow">Timeline</span>
+      <h2 class="tlpath__title">The road so far</h2>
+    </div>
+    <div class="tlpath__viewport">
+      <div class="tlpath__track">
+        <svg class="tlpath__svg" aria-hidden="true">
+          <path class="tlpath__line"></path>
+          <path class="tlpath__trail"></path>
+        </svg>
+        <div class="tlpath__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" fill="var(--color-black)"></circle>
+            <path d="M9 7l6 5-6 5"></path>
+          </svg>
+        </div>
+        <ol class="tlpath__events">
+          <li class="tlev tlev--above" data-i="0">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2021</span>
+              <span class="tlev__type">Education</span>
+              <span class="tlev__what">Technical Computer Science</span>
+              <span class="tlev__where">AUAS</span>
+            </div>
+          </li>
+          <li class="tlev tlev--below" data-i="1">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2023</span>
+              <span class="tlev__type">Education</span>
+              <span class="tlev__what">Communication &amp; Multimedia Design</span>
+              <span class="tlev__where">AUAS</span>
+            </div>
+          </li>
+          <li class="tlev tlev--above" data-i="2">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2025</span>
+              <span class="tlev__type">Work</span>
+              <span class="tlev__what">First UX/UI Internship</span>
+              <span class="tlev__where">Ecocharting</span>
+            </div>
+          </li>
+          <li class="tlev tlev--below" data-i="3">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2025</span>
+              <span class="tlev__type">Venture</span>
+              <span class="tlev__what">Founded a Software Company</span>
+              <span class="tlev__where">Day-to-Day</span>
+            </div>
+          </li>
+          <li class="tlev tlev--above" data-i="4">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2025</span>
+              <span class="tlev__type">Certification</span>
+              <span class="tlev__what">Junior Software Developer Certification</span>
+              <span class="tlev__where">Amazon</span>
+            </div>
+          </li>
+          <li class="tlev tlev--below" data-i="5">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2025</span>
+              <span class="tlev__type">Work</span>
+              <span class="tlev__what">Teaching Assistant — Front-end Development</span>
+              <span class="tlev__where">AUAS</span>
+            </div>
+          </li>
+          <li class="tlev tlev--above" data-i="6">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2025</span>
+              <span class="tlev__type">Certification</span>
+              <span class="tlev__what">Ethical Hacking with Open Source Tools</span>
+              <span class="tlev__where">IBM Specialization</span>
+            </div>
+          </li>
+          <li class="tlev tlev--below" data-i="7">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2025</span>
+              <span class="tlev__type">Education</span>
+              <span class="tlev__what">Minor Business Law</span>
+              <span class="tlev__where">AUAS</span>
+            </div>
+          </li>
+          <li class="tlev tlev--above" data-i="8">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2026</span>
+              <span class="tlev__type">Education</span>
+              <span class="tlev__what">Minor Web Design &amp; Development</span>
+              <span class="tlev__where">AUAS</span>
+            </div>
+          </li>
+          <li class="tlev tlev--below" data-i="9">
+            <span class="tlev__dot" aria-hidden="true"></span>
+            <span class="tlev__stem" aria-hidden="true"></span>
+            <div class="tlev__card">
+              <span class="tlev__year">2026</span>
+              <span class="tlev__type">Work</span>
+              <span class="tlev__what">Front-end Development Internship</span>
+              <span class="tlev__where">Build in Amsterdam</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <span class="tlpath__hint">Scroll</span>
+  </section>
+
+  <!-- Credentials. Every field below was read off the actual certificate scan
+       in Certificates/ — issuer, date and verification code all match the
+       document each row links to. Newest first. -->
+  <section class="certs" id="certificates">
+    <div class="container certs__container">
+      <div class="certs__head">
+        <span class="certs__eyebrow">Credentials</span>
+        <h2 class="certs__title">Certified, and <span class="focus__title-accent">verifiable</span></h2>
+      </div>
+
+      <div class="creds">
+        <div class="creds__stage">
+          <article class="cred is-active" data-cred="0">
+            <a class="cred__doc" href="Certificates/londen_fullstack.png" target="_blank" rel="noopener" aria-label="Open the Full-Stack Web Development certificate">
+              <img src="Certificates/londen_fullstack.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>University of London · <time datetime="2026-01-28">2026-01-28</time> · Specialization · 3 courses</span><a class="cred__verify" href="https://coursera.org/verify/specialization/RQP2ETQYTPQ6" target="_blank" rel="noopener">Verify ↗</a></p>
+          </article>
+          <article class="cred" data-cred="1" aria-hidden="true">
+            <a class="cred__doc" href="Certificates/ethicalHacking.png" target="_blank" rel="noopener" aria-label="Open the Ethical Hacking with Open Source Tools certificate">
+              <img src="Certificates/ethicalHacking.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>IBM · SkillUp · <time datetime="2025-10-08">2025-10-08</time> · Professional Certificate · 5 courses</span><a class="cred__verify" href="https://coursera.org/verify/professional-cert/RI1MHCBYI3V0" target="_blank" rel="noopener">Verify ↗</a></p>
+          </article>
+          <article class="cred" data-cred="2" aria-hidden="true">
+            <a class="cred__doc" href="Certificates/amazon_Junior_software_developer.png" target="_blank" rel="noopener" aria-label="Open the Amazon Junior Software Developer certificate">
+              <img src="Certificates/amazon_Junior_software_developer.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>Amazon · <time datetime="2025-08-17">2025-08-17</time> · Professional Certificate · 7 courses</span><a class="cred__verify" href="https://coursera.org/verify/professional-cert/5GOJ9UKHLDHX" target="_blank" rel="noopener">Verify ↗</a></p>
+          </article>
+          <article class="cred" data-cred="3" aria-hidden="true">
+            <a class="cred__doc" href="Certificates/Amazon_Introduction.png" target="_blank" rel="noopener" aria-label="Open the Introduction to Software Development certificate">
+              <img src="Certificates/Amazon_Introduction.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>Amazon · <time datetime="2025-07-04">2025-07-04</time> · Course</span><a class="cred__verify" href="https://coursera.org/verify/V01V12UOGJPJ" target="_blank" rel="noopener">Verify ↗</a></p>
+          </article>
+          <article class="cred" data-cred="4" aria-hidden="true">
+            <a class="cred__doc" href="Certificates/Jr_Penetration_Tester.png" target="_blank" rel="noopener" aria-label="Open the Jr Penetration Tester certificate">
+              <img src="Certificates/Jr_Penetration_Tester.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>TryHackMe · <time datetime="2025-06-08">2025-06-08</time> · Learning Path · 30h 40m</span><span class="cred__verify" style="border:none;color:var(--color-dim)">Ref THM-V8OEOCDDEO</span></p>
+          </article>
+          <article class="cred" data-cred="5" aria-hidden="true">
+            <a class="cred__doc" href="Certificates/Web_Fundamentals.png" target="_blank" rel="noopener" aria-label="Open the Web Fundamentals certificate">
+              <img src="Certificates/Web_Fundamentals.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>TryHackMe · <time datetime="2025-05-29">2025-05-29</time> · Learning Path · 17h 20m</span><span class="cred__verify" style="border:none;color:var(--color-dim)">Ref THM-UUDLEMAULA</span></p>
+          </article>
+          <article class="cred" data-cred="6" aria-hidden="true">
+            <a class="cred__doc" href="Certificates/Cybersecurity_101.png" target="_blank" rel="noopener" aria-label="Open the Cyber Security 101 certificate">
+              <img src="Certificates/Cybersecurity_101.png" alt="" loading="lazy">
+            </a>
+            <p class="cred__cap"><span>TryHackMe · <time datetime="2025-05-19">2025-05-19</time> · Learning Path · 45h 53m</span><span class="cred__verify" style="border:none;color:var(--color-dim)">Ref THM-JFFACCUDPL</span></p>
+          </article>
+        </div>
+
+        <ol class="creds__list">
+          <li>
+            <button type="button" class="cred__row is-active" data-cred="0" aria-pressed="true">
+              <span class="cred__idx">01</span>
+              <span class="cred__name">Full-Stack Web Development</span>
+              <span class="cred__sub">University of London · 2026</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cred__row" data-cred="1" aria-pressed="false">
+              <span class="cred__idx">02</span>
+              <span class="cred__name">Ethical Hacking with Open Source Tools</span>
+              <span class="cred__sub">IBM · SkillUp · 2025</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cred__row" data-cred="2" aria-pressed="false">
+              <span class="cred__idx">03</span>
+              <span class="cred__name">Amazon Junior Software Developer</span>
+              <span class="cred__sub">Amazon · 2025</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cred__row" data-cred="3" aria-pressed="false">
+              <span class="cred__idx">04</span>
+              <span class="cred__name">Introduction to Software Development</span>
+              <span class="cred__sub">Amazon · 2025</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cred__row" data-cred="4" aria-pressed="false">
+              <span class="cred__idx">05</span>
+              <span class="cred__name">Jr Penetration Tester</span>
+              <span class="cred__sub">TryHackMe · 2025</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cred__row" data-cred="5" aria-pressed="false">
+              <span class="cred__idx">06</span>
+              <span class="cred__name">Web Fundamentals</span>
+              <span class="cred__sub">TryHackMe · 2025</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="cred__row" data-cred="6" aria-pressed="false">
+              <span class="cred__idx">07</span>
+              <span class="cred__name">Cyber Security 101</span>
+              <span class="cred__sub">TryHackMe · 2025</span>
+            </button>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -496,7 +791,7 @@
           <span class="plan__divider"></span>
           <ul class="plan__features">
             <li class="plan__feature"><span class="plan__ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/></svg></span>Full-stack web or mobile app</li>
-            <li class="plan__feature"><span class="plan__ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5v5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5v-5z"/><path d="M9.2 12l2 2 3.6-3.6"/></svg></span>Security assessment &amp; hardening</li>
+            <li class="plan__feature"><span class="plan__ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>PCB design &amp; firmware</li>
             <li class="plan__feature"><span class="plan__ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></svg></span>Database architecture</li>
             <li class="plan__feature"><span class="plan__ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="1.5"/><path d="M8.5 10l1.4 1.4L13 8.5M8 15h8M8 17.5h5"/></svg></span>SLA-backed ongoing support</li>
             <li class="plan__feature"><span class="plan__ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 9.5h16M8.5 3.5v3M15.5 3.5v3"/></svg></span>Scoped to your timeline</li>
@@ -522,7 +817,7 @@
             <span class="faq__question">What services does NOMI Studio provide?</span>
             <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
           </button>
-          <div class="faq__a"><div class="faq__a-inner"><p>We offer brand identity and strategy, UX design, web development, and security assessments — everything you need to design, build, and secure a digital product.</p></div></div>
+          <div class="faq__a"><div class="faq__a-inner"><p>We offer brand identity and strategy, UX design, web development, and hardware engineering — everything you need to design, build, and ship a product, in software and in silicon.</p></div></div>
         </div>
 
         <div class="faq__item">
@@ -632,13 +927,13 @@
               </label>
 
               <label class="cservice__card">
-                <input type="checkbox" name="service" value="security-assessment">
+                <input type="checkbox" name="service" value="hardware-engineering">
                 <span class="cservice__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5v5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5v-5z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>
                 </span>
                 <span class="cservice__text">
-                  <span class="cservice__name">Security Assessment</span>
-                  <span class="cservice__desc">Audits and penetration testing.</span>
+                  <span class="cservice__name">Hardware Engineering</span>
+                  <span class="cservice__desc">PCB design, firmware and prototypes.</span>
                 </span>
               </label>
 
@@ -661,7 +956,7 @@
 
       <div class="contact__media">
         <!-- add the real photo later: style="background-image:url('your-image.jpg')" on .contact__media-img -->
-        <svg class="contact__media-svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="cbg" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#2b8ad9"/><stop offset="0.55" stop-color="#0d5aa8"/><stop offset="1" stop-color="#06356e"/></linearGradient><radialGradient id="cglow" cx="0.78" cy="0.16" r="0.5"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs><rect width="600" height="800" fill="url(#cbg)"/><circle cx="470" cy="130" r="230" fill="url(#cglow)"/><path d="M0.0 269.2 L13.6 274.7 L27.3 279.5 L40.9 283.5 L54.5 286.7 L68.2 288.8 L81.8 289.9 L95.5 289.9 L109.1 288.8 L122.7 286.7 L136.4 283.5 L150.0 279.5 L163.6 274.7 L177.3 269.2 L190.9 263.1 L204.5 256.8 L218.2 250.2 L231.8 243.6 L245.5 237.3 L259.1 231.2 L272.7 225.7 L286.4 220.8 L300.0 216.7 L313.6 213.5 L327.3 211.3 L340.9 210.2 L354.5 210.1 L368.2 211.1 L381.8 213.2 L395.5 216.2 L409.1 220.2 L422.7 225.0 L436.4 230.5 L450.0 236.4 L463.6 242.8 L477.3 249.3 L490.9 255.9 L504.5 262.3 L518.2 268.4 L531.8 274.0 L545.5 278.9 L559.1 283.0 L572.7 286.3 L586.4 288.6 L600.0 289.8 L600 800 L0 800 Z" fill="#0a5cb0" fill-opacity="0.9"/><path d="M0.0 431.2 L13.6 432.0 L27.3 431.0 L40.9 428.4 L54.5 424.1 L68.2 418.4 L81.8 411.4 L95.5 403.3 L109.1 394.5 L122.7 385.2 L136.4 375.8 L150.0 366.4 L163.6 357.6 L177.3 349.4 L190.9 342.3 L204.5 336.4 L218.2 332.0 L231.8 329.2 L245.5 328.0 L259.1 328.6 L272.7 330.9 L286.4 334.8 L300.0 340.2 L313.6 346.9 L327.3 354.7 L340.9 363.4 L354.5 372.6 L368.2 382.0 L381.8 391.4 L395.5 400.4 L409.1 408.7 L422.7 416.1 L436.4 422.3 L450.0 427.1 L463.6 430.3 L477.3 431.9 L490.9 431.7 L504.5 429.8 L518.2 426.3 L531.8 421.2 L545.5 414.8 L559.1 407.2 L572.7 398.7 L586.4 389.6 L600.0 380.2 L600 800 L0 800 Z" fill="#1c78cf" fill-opacity="0.85"/><path d="M0.0 519.1 L13.6 526.1 L27.3 532.7 L40.9 538.8 L54.5 544.1 L68.2 548.5 L81.8 552.0 L95.5 554.5 L109.1 555.8 L122.7 555.9 L136.4 554.9 L150.0 552.8 L163.6 549.6 L177.3 545.4 L190.9 540.3 L204.5 534.5 L218.2 528.0 L231.8 521.1 L245.5 513.9 L259.1 506.6 L272.7 499.4 L286.4 492.5 L300.0 486.0 L313.6 480.1 L327.3 474.9 L340.9 470.7 L354.5 467.4 L368.2 465.2 L381.8 464.1 L395.5 464.2 L409.1 465.4 L422.7 467.7 L436.4 471.1 L450.0 475.5 L463.6 480.8 L477.3 486.8 L490.9 493.3 L504.5 500.3 L518.2 507.5 L531.8 514.8 L545.5 522.0 L559.1 528.8 L572.7 535.2 L586.4 541.0 L600.0 546.0 L600 800 L0 800 Z" fill="#3f95e0" fill-opacity="0.8"/><path d="M0.0 675.6 L13.6 678.2 L27.3 679.7 L40.9 680.0 L54.5 679.1 L68.2 677.1 L81.8 673.9 L95.5 669.8 L109.1 664.9 L122.7 659.2 L136.4 652.9 L150.0 646.2 L163.6 639.4 L177.3 632.6 L190.9 626.0 L204.5 619.8 L218.2 614.2 L231.8 609.4 L245.5 605.4 L259.1 602.5 L272.7 600.7 L286.4 600.0 L300.0 600.5 L313.6 602.1 L327.3 604.9 L340.9 608.7 L354.5 613.4 L368.2 618.9 L381.8 625.0 L395.5 631.5 L409.1 638.3 L422.7 645.1 L436.4 651.8 L450.0 658.2 L463.6 664.0 L477.3 669.1 L490.9 673.3 L504.5 676.6 L518.2 678.8 L531.8 679.9 L545.5 679.8 L559.1 678.5 L572.7 676.1 L586.4 672.7 L600.0 668.3 L600 800 L0 800 Z" fill="#7cbcee" fill-opacity="0.7"/><path d="M0.0 269.2 L13.6 274.7 L27.3 279.5 L40.9 283.5 L54.5 286.7 L68.2 288.8 L81.8 289.9 L95.5 289.9 L109.1 288.8 L122.7 286.7 L136.4 283.5 L150.0 279.5 L163.6 274.7 L177.3 269.2 L190.9 263.1 L204.5 256.8 L218.2 250.2 L231.8 243.6 L245.5 237.3 L259.1 231.2 L272.7 225.7 L286.4 220.8 L300.0 216.7 L313.6 213.5 L327.3 211.3 L340.9 210.2 L354.5 210.1 L368.2 211.1 L381.8 213.2 L395.5 216.2 L409.1 220.2 L422.7 225.0 L436.4 230.5 L450.0 236.4 L463.6 242.8 L477.3 249.3 L490.9 255.9 L504.5 262.3 L518.2 268.4 L531.8 274.0 L545.5 278.9 L559.1 283.0 L572.7 286.3 L586.4 288.6 L600.0 289.8" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2.5"/><path d="M0.0 431.2 L13.6 432.0 L27.3 431.0 L40.9 428.4 L54.5 424.1 L68.2 418.4 L81.8 411.4 L95.5 403.3 L109.1 394.5 L122.7 385.2 L136.4 375.8 L150.0 366.4 L163.6 357.6 L177.3 349.4 L190.9 342.3 L204.5 336.4 L218.2 332.0 L231.8 329.2 L245.5 328.0 L259.1 328.6 L272.7 330.9 L286.4 334.8 L300.0 340.2 L313.6 346.9 L327.3 354.7 L340.9 363.4 L354.5 372.6 L368.2 382.0 L381.8 391.4 L395.5 400.4 L409.1 408.7 L422.7 416.1 L436.4 422.3 L450.0 427.1 L463.6 430.3 L477.3 431.9 L490.9 431.7 L504.5 429.8 L518.2 426.3 L531.8 421.2 L545.5 414.8 L559.1 407.2 L572.7 398.7 L586.4 389.6 L600.0 380.2" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="2.5"/><path d="M0.0 519.1 L13.6 526.1 L27.3 532.7 L40.9 538.8 L54.5 544.1 L68.2 548.5 L81.8 552.0 L95.5 554.5 L109.1 555.8 L122.7 555.9 L136.4 554.9 L150.0 552.8 L163.6 549.6 L177.3 545.4 L190.9 540.3 L204.5 534.5 L218.2 528.0 L231.8 521.1 L245.5 513.9 L259.1 506.6 L272.7 499.4 L286.4 492.5 L300.0 486.0 L313.6 480.1 L327.3 474.9 L340.9 470.7 L354.5 467.4 L368.2 465.2 L381.8 464.1 L395.5 464.2 L409.1 465.4 L422.7 467.7 L436.4 471.1 L450.0 475.5 L463.6 480.8 L477.3 486.8 L490.9 493.3 L504.5 500.3 L518.2 507.5 L531.8 514.8 L545.5 522.0 L559.1 528.8 L572.7 535.2 L586.4 541.0 L600.0 546.0" fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2.5"/></svg>
+        <svg class="contact__media-svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="cbg" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#333333"/><stop offset="0.55" stop-color="#1e1e1e"/><stop offset="1" stop-color="#0d0d0d"/></linearGradient><radialGradient id="cglow" cx="0.78" cy="0.16" r="0.5"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs><rect width="600" height="800" fill="url(#cbg)"/><circle cx="470" cy="130" r="230" fill="url(#cglow)"/><path d="M0.0 269.2 L13.6 274.7 L27.3 279.5 L40.9 283.5 L54.5 286.7 L68.2 288.8 L81.8 289.9 L95.5 289.9 L109.1 288.8 L122.7 286.7 L136.4 283.5 L150.0 279.5 L163.6 274.7 L177.3 269.2 L190.9 263.1 L204.5 256.8 L218.2 250.2 L231.8 243.6 L245.5 237.3 L259.1 231.2 L272.7 225.7 L286.4 220.8 L300.0 216.7 L313.6 213.5 L327.3 211.3 L340.9 210.2 L354.5 210.1 L368.2 211.1 L381.8 213.2 L395.5 216.2 L409.1 220.2 L422.7 225.0 L436.4 230.5 L450.0 236.4 L463.6 242.8 L477.3 249.3 L490.9 255.9 L504.5 262.3 L518.2 268.4 L531.8 274.0 L545.5 278.9 L559.1 283.0 L572.7 286.3 L586.4 288.6 L600.0 289.8 L600 800 L0 800 Z" fill="#242424" fill-opacity="0.9"/><path d="M0.0 431.2 L13.6 432.0 L27.3 431.0 L40.9 428.4 L54.5 424.1 L68.2 418.4 L81.8 411.4 L95.5 403.3 L109.1 394.5 L122.7 385.2 L136.4 375.8 L150.0 366.4 L163.6 357.6 L177.3 349.4 L190.9 342.3 L204.5 336.4 L218.2 332.0 L231.8 329.2 L245.5 328.0 L259.1 328.6 L272.7 330.9 L286.4 334.8 L300.0 340.2 L313.6 346.9 L327.3 354.7 L340.9 363.4 L354.5 372.6 L368.2 382.0 L381.8 391.4 L395.5 400.4 L409.1 408.7 L422.7 416.1 L436.4 422.3 L450.0 427.1 L463.6 430.3 L477.3 431.9 L490.9 431.7 L504.5 429.8 L518.2 426.3 L531.8 421.2 L545.5 414.8 L559.1 407.2 L572.7 398.7 L586.4 389.6 L600.0 380.2 L600 800 L0 800 Z" fill="#333333" fill-opacity="0.85"/><path d="M0.0 519.1 L13.6 526.1 L27.3 532.7 L40.9 538.8 L54.5 544.1 L68.2 548.5 L81.8 552.0 L95.5 554.5 L109.1 555.8 L122.7 555.9 L136.4 554.9 L150.0 552.8 L163.6 549.6 L177.3 545.4 L190.9 540.3 L204.5 534.5 L218.2 528.0 L231.8 521.1 L245.5 513.9 L259.1 506.6 L272.7 499.4 L286.4 492.5 L300.0 486.0 L313.6 480.1 L327.3 474.9 L340.9 470.7 L354.5 467.4 L368.2 465.2 L381.8 464.1 L395.5 464.2 L409.1 465.4 L422.7 467.7 L436.4 471.1 L450.0 475.5 L463.6 480.8 L477.3 486.8 L490.9 493.3 L504.5 500.3 L518.2 507.5 L531.8 514.8 L545.5 522.0 L559.1 528.8 L572.7 535.2 L586.4 541.0 L600.0 546.0 L600 800 L0 800 Z" fill="#454545" fill-opacity="0.8"/><path d="M0.0 675.6 L13.6 678.2 L27.3 679.7 L40.9 680.0 L54.5 679.1 L68.2 677.1 L81.8 673.9 L95.5 669.8 L109.1 664.9 L122.7 659.2 L136.4 652.9 L150.0 646.2 L163.6 639.4 L177.3 632.6 L190.9 626.0 L204.5 619.8 L218.2 614.2 L231.8 609.4 L245.5 605.4 L259.1 602.5 L272.7 600.7 L286.4 600.0 L300.0 600.5 L313.6 602.1 L327.3 604.9 L340.9 608.7 L354.5 613.4 L368.2 618.9 L381.8 625.0 L395.5 631.5 L409.1 638.3 L422.7 645.1 L436.4 651.8 L450.0 658.2 L463.6 664.0 L477.3 669.1 L490.9 673.3 L504.5 676.6 L518.2 678.8 L531.8 679.9 L545.5 679.8 L559.1 678.5 L572.7 676.1 L586.4 672.7 L600.0 668.3 L600 800 L0 800 Z" fill="#5c5c5c" fill-opacity="0.7"/><path d="M0.0 269.2 L13.6 274.7 L27.3 279.5 L40.9 283.5 L54.5 286.7 L68.2 288.8 L81.8 289.9 L95.5 289.9 L109.1 288.8 L122.7 286.7 L136.4 283.5 L150.0 279.5 L163.6 274.7 L177.3 269.2 L190.9 263.1 L204.5 256.8 L218.2 250.2 L231.8 243.6 L245.5 237.3 L259.1 231.2 L272.7 225.7 L286.4 220.8 L300.0 216.7 L313.6 213.5 L327.3 211.3 L340.9 210.2 L354.5 210.1 L368.2 211.1 L381.8 213.2 L395.5 216.2 L409.1 220.2 L422.7 225.0 L436.4 230.5 L450.0 236.4 L463.6 242.8 L477.3 249.3 L490.9 255.9 L504.5 262.3 L518.2 268.4 L531.8 274.0 L545.5 278.9 L559.1 283.0 L572.7 286.3 L586.4 288.6 L600.0 289.8" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2.5"/><path d="M0.0 431.2 L13.6 432.0 L27.3 431.0 L40.9 428.4 L54.5 424.1 L68.2 418.4 L81.8 411.4 L95.5 403.3 L109.1 394.5 L122.7 385.2 L136.4 375.8 L150.0 366.4 L163.6 357.6 L177.3 349.4 L190.9 342.3 L204.5 336.4 L218.2 332.0 L231.8 329.2 L245.5 328.0 L259.1 328.6 L272.7 330.9 L286.4 334.8 L300.0 340.2 L313.6 346.9 L327.3 354.7 L340.9 363.4 L354.5 372.6 L368.2 382.0 L381.8 391.4 L395.5 400.4 L409.1 408.7 L422.7 416.1 L436.4 422.3 L450.0 427.1 L463.6 430.3 L477.3 431.9 L490.9 431.7 L504.5 429.8 L518.2 426.3 L531.8 421.2 L545.5 414.8 L559.1 407.2 L572.7 398.7 L586.4 389.6 L600.0 380.2" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="2.5"/><path d="M0.0 519.1 L13.6 526.1 L27.3 532.7 L40.9 538.8 L54.5 544.1 L68.2 548.5 L81.8 552.0 L95.5 554.5 L109.1 555.8 L122.7 555.9 L136.4 554.9 L150.0 552.8 L163.6 549.6 L177.3 545.4 L190.9 540.3 L204.5 534.5 L218.2 528.0 L231.8 521.1 L245.5 513.9 L259.1 506.6 L272.7 499.4 L286.4 492.5 L300.0 486.0 L313.6 480.1 L327.3 474.9 L340.9 470.7 L354.5 467.4 L368.2 465.2 L381.8 464.1 L395.5 464.2 L409.1 465.4 L422.7 467.7 L436.4 471.1 L450.0 475.5 L463.6 480.8 L477.3 486.8 L490.9 493.3 L504.5 500.3 L518.2 507.5 L531.8 514.8 L545.5 522.0 L559.1 528.8 L572.7 535.2 L586.4 541.0 L600.0 546.0" fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2.5"/></svg>
         <div class="contact__brand"><img class="contact__brand-logo" src="nomi-logo.svg" alt=""> NOMI STUDIO</div>
         <div class="contact__overlay">
           <p class="contact__quote">Design, build and secure — all under one roof. Let&rsquo;s ship something your customers love.</p>
@@ -694,7 +989,7 @@
             <h4 class="footer__heading">Services</h4>
             <a class="footer__link" href="detail-pages/services/ux-design.html">UX Design</a>
             <a class="footer__link" href="detail-pages/services/web-development.html">Web Development</a>
-            <a class="footer__link" href="detail-pages/services/security-assessment.html">Security Assessment</a>
+            <a class="footer__link" href="detail-pages/services/hardware-engineering.html">Hardware Engineering</a>
           </div>
           <div class="footer__col">
             <h4 class="footer__heading">Company</h4>
