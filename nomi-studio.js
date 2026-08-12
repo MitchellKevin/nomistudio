@@ -286,7 +286,7 @@ if (servicesSection && SERVICE_COUNT > 1) {
   // right-side line icon morphs from one service's icon to the next, in sync
   // with the scrub — one morph per transition, spread across the timeline.
   const svcIcon = document.querySelector('#svc-icon');
-  const iconIds = ['#icon-ux', '#icon-web', '#icon-hw'];
+  const iconIds = ['#icon-ux', '#icon-web', '#icon-photo'];
   if (svcIcon && window.MorphSVGPlugin && iconIds.length === SERVICE_COUNT) {
     const seg = carousel.duration() / LAST;
     for (let i = 0; i < LAST; i++) {

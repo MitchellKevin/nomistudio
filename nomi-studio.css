@@ -246,9 +246,25 @@ body {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  /* the particle logo lies underneath everything in the hero — the headline,
+     the marquee and the button all keep their own stacking above it */
+  .hero__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+    /* it sits directly behind the headline now, so it has to stay a backdrop —
+       at full strength the white dots fight the white type */
+    opacity: 0.5;
+  }
   .container {
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
   .hero-video {
     position: absolute;
@@ -434,6 +450,11 @@ body {
 }
 
 @media (max-width: 700px) {
+  /* no cursor to react to, and the headline already fills the screen — the
+     particle field would only sit behind the type eating frames */
+  .hero .hero__particles {
+    display: none;
+  }
   /* the bottom corners are busier on mobile — sit the strip above the
      "Get in touch" circle and let it run the full width */
   .hero .partners {
@@ -785,6 +806,92 @@ body {
 }
 .bpost:hover .bpost__arrow {
   transform: translateX(0.05rem);
+}
+
+/* Cover art, sitting under the copy. The slot takes an <img> just as happily
+   as the inline <svg> covers that ship with the posts. */
+.bpost__media {
+  position: relative;
+  display: block;
+  margin-top: 0.26rem;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.12rem;
+  overflow: hidden;
+  background: var(--color-black);
+  border: 1px solid var(--color-border);
+}
+.bpost__cover,
+.bpost__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+.bpost:hover .bpost__cover,
+.bpost:hover .bpost__media img {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+/* The same glass the site header is made of, shrunk down and used as a plate
+   that follows the cursor. blog-cards.js publishes the cursor offset from the
+   centre of the cover as --glass-x / --glass-y; the transform transition is
+   what gives it its slight trail. Unset, it rests dead centre. */
+.bpost__glass {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(var(--glass-x, 0px), var(--glass-y, 0px)) translate(-50%, -50%) scale(0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.07rem;
+  padding: 0.08rem 0.17rem;
+  border-radius: 0.16rem;
+  background: rgba(12, 12, 12, 0.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0.04rem 0.2rem rgba(0, 0, 0, 0.5);
+  font-family: var(--sub-font);
+  font-size: 0.125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-white);
+  opacity: 0;
+  /* it must never eat the pointer events it is following */
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bpost:hover .bpost__glass,
+.bpost:focus-visible .bpost__glass {
+  opacity: 1;
+  transform: translate(var(--glass-x, 0px), var(--glass-y, 0px)) translate(-50%, -50%) scale(1);
+}
+.bpost__glass-arrow {
+  transition: transform 0.25s ease;
+}
+.bpost:hover .bpost__glass-arrow {
+  transform: translateX(0.05rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the plate still appears, it just stops moving — note the centring
+     translate has to stay, it is what positions the plate at all */
+  .bpost__cover,
+  .bpost__media img,
+  .bpost:hover .bpost__cover,
+  .bpost:hover .bpost__media img,
+  .bpost__glass-arrow,
+  .bpost:hover .bpost__glass-arrow {
+    transition: filter 0.2s ease;
+    transform: none;
+  }
+  .bpost__glass,
+  .bpost:hover .bpost__glass,
+  .bpost:focus-visible .bpost__glass {
+    transition: opacity 0.2s ease;
+    transform: translate(var(--glass-x, 0px), var(--glass-y, 0px)) translate(-50%, -50%);
+  }
 }
 
 /* ---------- archive page ---------- */
